@@ -46,5 +46,15 @@ git status
 ```
 Este comando te mostrará en color rojo los archivos que has modificado y aún no has subido.
 
+---
+
+## Vercel y Automatización 🚀
+
+**¡Buenas noticias!** Como tienes el proyecto conectado a Vercel:
+
+*   **Es Automático**: Cada vez que hagas un `git push origin main`, Vercel detectará el cambio y comenzará una nueva "Deployment" automáticamente.
+*   **Sin nada manual**: No necesitas entrar a Vercel ni subir archivos manualmente. En un par de minutos después del *push*, tus cambios estarán vivos en la web.
+*   **Historial**: En el panel de Vercel podrás ver cada una de las versiones que has subido.
+
 ### ¿Qué pasa si cambio el index.html principal?
 Sigue los mismos 3 pasos (`add`, `commit`, `push`). Git se encarga de sincronizarlo todo en tu repositorio de GitHub.
