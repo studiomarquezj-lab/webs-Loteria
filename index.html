@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Loterías - Acceso Directo</title>
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --piramide-accent: #fbbf24;
+            --zoo-accent: #22c55e;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--primary-bg);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(22, 101, 52, 0.2) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-piramide:hover {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+        }
+
+        .card-zoo:hover {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+        }
+
+        .logo-container {
+            width: 160px;
+            height: 160px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .btn {
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .card-piramide .btn {
+            background: var(--piramide-accent);
+            color: #000;
+        }
+
+        .card-zoo .btn {
+            background: var(--zoo-accent);
+            color: #fff;
+        }
+
+        .card:hover .btn {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            margin-top: 5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Nuestras Plataformas</h1>
+            <p>Explora los resultados de Triple Pirámide y Zoológico Activo</p>
+        </header>
+
+        <div class="grid">
+            <!-- Pirámide -->
+            <a href="Tripe piramide final v2/index.html" class="card card-piramide">
+                <div class="logo-container">
+                    <img src="Tripe piramide final v2/images/triple_piramide_logo.png" alt="Triple Pirámide">
+                </div>
+                <h2>Triple Pirámide</h2>
+                <p>Accede a los resultados y sorteos de la Pirámide del día.</p>
+                <div class="btn">Ingresar</div>
+            </a>
+
+            <!-- Zoológico -->
+            <a href="Zoologico Activo Final/index.html" class="card card-zoo" style="animation-delay: 0.1s;">
+                <div class="logo-container">
+                    <img src="Zoologico Activo Final/Images/logo zoo conf.png" alt="Zoológico Activo">
+                </div>
+                <h2>Zoológico Activo</h2>
+                <p>Descubre el animal ganador y consulta las estadísticas del día.</p>
+                <div class="btn">Ingresar</div>
+            </a>
+        </div>
+
+        <footer class="footer">
+            &copy; 2026 Portal de Loterías. Todos los derechos reservados.
+        </footer>
+    </div>
+
+</body>
+
+</html>

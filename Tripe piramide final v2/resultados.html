@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados - Triple Pirámide de Oro | Historial de Sorteos</title>
+
+    <!-- Meta tags -->
+    <meta name="description"
+        content="Consulta los resultados históricos de Triple Pirámide de Oro. Filtra por fecha y horario de sorteo.">
+    <meta name="keywords" content="resultados, sorteos, historial, triple pirámide, lotería">
+
+    <!-- Fuentes y iconos -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/triple_piramide_logo.png">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="pyramid-loader">
+                <div class="pyramid"></div>
+                <div class="pyramid-shadow"></div>
+            </div>
+            <h2>Cargando resultados...</h2>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/triple_piramide_logo.png" alt="Triple Pirámide de Oro" class="logo-img">
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="resultados.html" class="nav-link active">Resultados</a></li>
+                <li><a href="reglamento.html" class="nav-link">Reglamento</a></li>
+                <li><a href="index.html#comprar" class="nav-cta">Comprar Ticket</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Results -->
+    <section class="results-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-main">Resultados</span>
+                    <span class="title-accent">Históricos</span>
+                </h1>
+                <p class="hero-subtitle">Consulta todos los sorteos realizados</p>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-card">
+                <h3>Filtros de Búsqueda</h3>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="filter-date">Fecha</label>
+                        <input type="date" id="filter-date" name="filter-date">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-sorteo">Sorteo</label>
+                        <select id="filter-sorteo" name="filter-sorteo">
+                            <option value="">Todos los sorteos</option>
+                            <option value="11:45">11:45 AM - Matutino</option>
+                            <option value="15:45">3:45 PM - Vespertino</option>
+                            <option value="18:45">6:45 PM - Nocturno</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-search">Buscar número</label>
+                        <input type="text" id="filter-search" name="filter-search" placeholder="Ej: 123">
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="btn-primary" id="apply-filters">
+                            <i class="fas fa-search"></i>
+                            Buscar
+                        </button>
+                        <button class="btn-secondary" id="clear-filters">
+                            <i class="fas fa-times"></i>
+                            Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Table Section -->
+    <section class="results-table-section">
+        <div class="container">
+            <div class="table-header">
+                <h2>Historial de Resultados</h2>
+                <div class="table-stats">
+                    <span id="results-count">Cargando...</span>
+
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table class="results-table" id="results-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Horario</th>
+                                <th>Triple A</th>
+                                <th>Terminal A</th>
+                                <th>Triple B</th>
+                                <th>Terminal B</th>
+                                <th>Zodiacal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-tbody">
+                            <!-- Los resultados se cargan dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Loading state -->
+                <div class="table-loading" id="table-loading">
+                    <div class="spinner"></div>
+                    <p>Cargando resultados...</p>
+                </div>
+
+                <!-- No results state -->
+                <div class="no-results" id="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3>No se encontraron resultados</h3>
+                    <p>Intenta con otros filtros de búsqueda</p>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <button class="pagination-btn" id="prev-page" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    Anterior
+                </button>
+                <div class="pagination-info">
+                    <span id="page-info">Página 1 de 1</span>
+                </div>
+                <button class="pagination-btn" id="next-page" disabled>
+                    Siguiente
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <p>&copy; 2025 Triple Pirámide de Oro - Todos los derechos reservados</p>
+                <p>Operado por Operadora El Emperador de Oro, C.A. | Lotería de Guayana</p>
+                <a href="https://www.instagram.com/triplepiramidedeoro/" target="_blank" class="footer-instagram">
+                    <i class="fab fa-instagram"></i>
+                    Síguenos en Instagram @triplepiramidedeoro
+                </a>
+                <p class="warning">⚠️ Prohibida la venta a menores de edad</p>
+                <div class="footer-partners">
+                    <img src="images/loteria_guayana_logo.png" alt="Lotería de Guayana" class="partner-logo"
+                        loading="lazy">
+                    <img src="images/conalot_logo.png" alt="CONALOT" class="partner-logo" loading="lazy">
+                </div>
+            </div>
+            <div class="footer-agency">
+                <span class="agency-text">Hecho por In Agencia</span>
+                <a href="https://www.instagram.com/agenciainmk/#" target="_blank">
+                    <img src="images/in svg blanco.svg" alt="In Agencia" class="agency-logo" loading="lazy">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content">
+            <p>Utilizamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra política de
+                cookies.</p>
+            <button id="accept-cookies" class="btn-cookie">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/backend-api.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Script específico para la página de resultados
+        document.addEventListener('DOMContentLoaded', function () {
+            loadResults();
+            setupFilters();
+        });
+
+        // Función para cargar resultados
+        async function loadResults(page = 1) {
+            const tbody = document.getElementById('results-tbody');
+            const loading = document.getElementById('table-loading');
+            const noResults = document.getElementById('no-results');
+
+            try {
+                loading.style.display = 'block';
+                noResults.style.display = 'none';
+
+                const results = await API.getResults({
+                    page: page,
+                    limit: 20,
+                    ...getFilters()
+                });
+
+                tbody.innerHTML = '';
+
+                if (results.length === 0) {
+                    noResults.style.display = 'block';
+                    return;
+                }
+
+                results.forEach(result => {
+                    const row = createResultRow(result);
+                    tbody.appendChild(row);
+                });
+
+                updatePagination(results.pagination);
+                updateResultsCount(results.total);
+
+            } catch (error) {
+                console.error('Error cargando resultados:', error);
+                showError('Error al cargar los resultados');
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Crear fila de resultado
+        function createResultRow(result) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${formatDate(result.fecha)}</td>
+                <td><span class="time-badge">${result.horario}</span></td>
+                <td><span class="number-badge triple">${result.triple_a}</span></td>
+                <td><span class="number-badge terminal">${result.terminal_a}</span></td>
+                <td><span class="number-badge triple">${result.triple_b}</span></td>
+                <td><span class="number-badge terminal">${result.terminal_b}</span></td>
+                <td><span class="zodiac-badge">${result.zodiacal}</span></td>
+            `;
+            return row;
+        }
+
+        // Configurar filtros
+        function setupFilters() {
+            const dateInput = document.getElementById('filter-date');
+            const applyBtn = document.getElementById('apply-filters');
+            const clearBtn = document.getElementById('clear-filters');
+
+            // Establecer fecha máxima como hoy
+            dateInput.max = new Date().toISOString().split('T')[0];
+
+            applyBtn.addEventListener('click', () => loadResults(1));
+            clearBtn.addEventListener('click', clearFilters);
+
+            // Auto-búsqueda al escribir
+            document.getElementById('filter-search').addEventListener('input', debounce(() => loadResults(1), 500));
+        }
+
+        // Obtener filtros activos
+        function getFilters() {
+            return {
+                fecha: document.getElementById('filter-date').value,
+                sorteo: document.getElementById('filter-sorteo').value,
+                search: document.getElementById('filter-search').value
+            };
+        }
+
+        // Limpiar filtros
+        function clearFilters() {
+            document.getElementById('filter-date').value = '';
+            document.getElementById('filter-sorteo').value = '';
+            document.getElementById('filter-search').value = '';
+            loadResults(1);
+        }
+
+
+
+
+        // Actualizar contador de resultados
+        function updateResultsCount(total) {
+            document.getElementById('results-count').textContent = `${total} resultados encontrados`;
+        }
+
+        // Actualizar paginación
+        function updatePagination(pagination) {
+            const prevBtn = document.getElementById('prev-page');
+            const nextBtn = document.getElementById('next-page');
+            const pageInfo = document.getElementById('page-info');
+
+            prevBtn.disabled = pagination.currentPage === 1;
+            nextBtn.disabled = pagination.currentPage === pagination.totalPages;
+
+            pageInfo.textContent = `Página ${pagination.currentPage} de ${pagination.totalPages}`;
+
+            prevBtn.onclick = () => loadResults(pagination.currentPage - 1);
+            nextBtn.onclick = () => loadResults(pagination.currentPage + 1);
+        }
+
+        // Formatear fecha
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+
+        // Formatear moneda
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('es-ES').format(amount);
+        }
+
+        // Función debounce para optimizar búsquedas
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Mostrar error
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            document.body.appendChild(errorDiv);
+
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados - Zoológico Activo</title>
+    <meta name="description"
+        content="Consulta los resultados de todos los sorteos de Zoológico Activo - Lotería de Guayana">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="ANIMALITOS/63.png">
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+
+    <!-- ==========================================
+         NAVEGACIÓN PRINCIPAL
+         Menú superior con logo y enlaces a secciones.
+         ========================================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo zoolo sinf.png" alt="Zoológico Activo" class="logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="resultados.html" class="active">Resultados</a></li>
+                <li><a href="reglamento.html">Reglamento</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         ENCABEZADO DE PÁGINA
+         Título y descripción de la sección de resultados.
+         ========================================== -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">📋 Resultados de Sorteos</h1>
+            <p class="page-subtitle">Consulta el historial completo de todos los sorteos</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FILTROS DE BÚSQUEDA
+         Herramientas para filtrar resultados por fecha, animal, etc.
+         ========================================== -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-card">
+                <!-- FILTROS DE BARRA DE ACCIÓN COMPACTA -->
+                <div class="filters-wrapper">
+                    <div class="filters-action-bar">
+                        <div class="search-box-compact">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="searchInput" placeholder="Buscar...">
+                        </div>
+                        <div class="filter-chips">
+                            <button class="filter-chip" data-target="expandDate" id="chipDate">
+                                📅 <span class="chip-text">Fecha</span>
+                            </button>
+                            <button class="filter-chip" data-target="expandAnimal" id="chipAnimal">
+                                🦁 <span class="chip-text">Animal</span>
+                            </button>
+                            <button class="filter-chip" data-target="expandTime" id="chipTime">
+                                ⏰ <span class="chip-text">Hora</span>
+                            </button>
+                            <button class="filter-chip-clear" id="clearFilters">
+                                🔄
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PANEL DE EXPANSIÓN EN LÍNEA -->
+                    <div class="filters-expansion-panel" id="expansionPanel">
+                        <!-- Sección de Fecha -->
+                        <div class="expansion-content" id="expandDate">
+                            <label class="expansion-label">Selecciona una Fecha</label>
+                            <!-- Componente de Calendario Personalizado -->
+                            <div class="calendar-wrapper">
+                                <div class="calendar-header">
+                                    <button id="prevMonth" class="calendar-nav-btn">&lt;</button>
+                                    <span id="currentMonthDisplay" class="current-month">Diciembre 2025</span>
+                                    <button id="nextMonth" class="calendar-nav-btn">&gt;</button>
+                                </div>
+                                <div class="calendar-weekdays">
+                                    <span>Dom</span><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span>
+                                </div>
+                                <div class="calendar-grid" id="calendarGrid">
+                                    <!-- Días serán poblados por JS -->
+                                </div>
+                            </div>
+                            <input type="hidden" id="filterDate"> <!-- Input oculto para almacenar valor -->
+                        </div>
+
+                        <!-- Sección de Animales -->
+                        <div class="expansion-content" id="expandAnimal">
+                            <label class="expansion-label">Selecciona un Animal</label>
+                            <div class="animal-grid" id="animalGrid">
+                                <!-- Poblado por JS -->
+                            </div>
+                        </div>
+
+                        <!-- Sección de Hora -->
+                        <div class="expansion-content" id="expandTime">
+                            <label class="expansion-label">Selecciona una Hora</label>
+                            <div class="time-scroller" id="timeScroller">
+                                <!-- Poblado por JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         TABLA DE RESULTADOS
+         Lista detallada de los sorteos con paginación.
+         ========================================== -->
+    <section class="results-table-section">
+        <div class="container">
+            <div class="table-container">
+                <table class="results-table" id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="animal" class="sortable">
+                                Animal <span class="sort-icon">↕</span>
+                            </th>
+                            <th data-sort="number" class="sortable">
+                                Número <span class="sort-icon">↕</span>
+                            </th>
+                            <th data-sort="date" class="sortable">
+                                Fecha <span class="sort-icon">↕</span>
+                            </th>
+                            <th data-sort="time" class="sortable">
+                                Hora <span class="sort-icon">↕</span>
+                            </th>
+                            <th data-sort="id" class="sortable">
+                                Nro. Sorteo <span class="sort-icon">↕</span>
+                            </th>
+                            <th>Premio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <!-- Se llena con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination" id="pagination">
+                <!-- Se llena con JavaScript -->
+            </div>
+
+            <div class="results-summary">
+                <span id="resultsSummary">Mostrando 0 resultados</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER (PIE DE PÁGINA)
+         Enlaces legales, redes sociales e información de contacto.
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="images/logo zoolo sinf.png" alt="Zoológico Activo" class="logo-img">
+                    </div>
+                    <p class="footer-slogan">Donde la transparencia es tu suerte segura</p>
+                    <div class="footer-logos">
+                        <img src="images/loteria de guyana.png" alt="Lotería de Guayana" class="footer-logo">
+                        <img src="images/conalot logo.png" alt="Conalot" class="footer-logo">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="resultados.html">Resultados</a></li>
+                        <li><a href="reglamento.html">Reglamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h4>Información</h4>
+                    <p><strong>Operador:</strong> Lotería de Guayana</p>
+                    <p><strong>RIF:</strong> J-505567942</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="age-restriction">
+                    <span class="age-badge">18+</span>
+                    <span>Prohibido para menores de 18 años</span>
+                </div>
+                <p class="copyright">© 2025 Zoológico Activo - Todos los derechos reservados</p>
+                <div class="agency-credit">
+                    <span>Hecho por</span>
+                    <a href="https://www.instagram.com/agenciainmk" target="_blank" class="agency-link">
+                        <img src="images/in svg blanco.svg" alt="IN Agencia" class="agency-logo">
+                        IN Agencia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         MODAL DE DETALLES
+         Muestra información ampliada del sorteo.
+         ========================================== -->
+    <div class="modal-overlay" id="resultModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Se llena con JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/results.js"></script>
+</body>
+
+</html>

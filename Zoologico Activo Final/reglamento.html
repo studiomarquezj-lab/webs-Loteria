@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reglamento - Zoológico Activo</title>
+    <meta name="description" content="Conoce las reglas, mecánica del juego y tabla de pagos de Zoológico Activo">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="ANIMALITOS/63.png">
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+
+    <!-- ==========================================
+         NAVEGACIÓN PRINCIPAL
+         Menú superior con logo y enlaces a secciones.
+         ========================================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo zoolo sinf.png" alt="Zoológico Activo" class="logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="resultados.html">Resultados</a></li>
+                <li><a href="reglamento.html" class="active">Reglamento</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         ENCABEZADO DE PÁGINA
+         Título y descripción de la sección de reglamento.
+         ========================================== -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">📜 Reglamento del Juego</h1>
+            <p class="page-subtitle">Todo lo que necesitas saber sobre Zoológico Activo</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENIDO DEL REGLAMENTO
+         Tarjetas con las reglas, mecánica y tablas de premios.
+         ========================================== -->
+    <!-- ==========================================
+         CONTENIDO DEL REGLAMENTO
+         Texto legal completo y actualizado.
+         ========================================== -->
+    <section class="rules-section">
+        <div class="container">
+            <!-- ==========================================
+                 CONTENIDO ORIGINAL (RESUMEN)
+                 ========================================== -->
+
+            <!-- Mecánica del Juego -->
+            <div class="rule-card theme-vibrant">
+                <div class="rule-header">
+                    <span class="rule-icon">🎮</span>
+                    <h2>Mecánica del Juego</h2>
+                </div>
+                <div class="rule-content">
+                    <p>Zoológico Activo es un juego de azar tipo "ruleta de animalitos", operado por la <strong>Lotería
+                            de Guayana</strong>. El juego consiste en apostar a una figura específica que combina un
+                        número y un animal.</p>
+
+                    <div class="info-box">
+                        <h4>📋 El Tablero</h4>
+                        <p>Hay un total de <strong>65 opciones</strong> posibles para apostar:</p>
+                        <ul>
+                            <li><strong>00</strong> - Ballena (Especial)</li>
+                            <li><strong>0</strong> - Delfín (Especial)</li>
+                            <li><strong>1 al 62</strong> - Cada número asociado a un animal único</li>
+                            <li><strong>63</strong> - Comodín (Logo de Zoológico Activo) - <span
+                                    class="highlight">¡Premio Mayor!</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box highlight-box">
+                        <h4>💰 Costo de Apuesta</h4>
+                        <p>El monto mínimo para jugar es de <strong>1 Bs</strong> (Bolívar).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Pagos -->
+            <div class="rule-card theme-blue">
+                <div class="rule-header">
+                    <span class="rule-icon">💎</span>
+                    <h2>Tabla de Pagos</h2>
+                </div>
+                <div class="rule-content">
+                    <p>El juego ofrece tres formas distintas de ganar según el resultado del sorteo:</p>
+
+                    <div class="payout-cards">
+                        <div class="payout-card">
+                            <div class="payout-card-header">
+                                <span class="payout-emoji">🎯</span>
+                                <h3>Acierto Directo</h3>
+                            </div>
+                            <div class="payout-multiplier">× 40</div>
+                            <p>Si sale exactamente el número/animal al que apostaste.</p>
+                            <div class="payout-example">
+                                <strong>Ejemplo:</strong> Apuestas 10 Bs → Ganas <span class="gold">400 Bs</span>
+                            </div>
+                        </div>
+
+                        <div class="payout-card">
+                            <div class="payout-card-header">
+                                <span class="payout-emoji">↔️</span>
+                                <h3>Aproximación</h3>
+                            </div>
+                            <div class="payout-multiplier">× 4</div>
+                            <p>Si sale el número inmediatamente anterior o posterior al que apostaste.</p>
+                            <div class="payout-example">
+                                <strong>Ejemplo:</strong> Apuestas 10 Bs → Ganas <span class="gold">40 Bs</span>
+                            </div>
+                        </div>
+
+                        <div class="payout-card comodin-card">
+                            <div class="payout-card-header">
+                                <span class="payout-emoji">⭐</span>
+                                <h3>Comodín (63)</h3>
+                            </div>
+                            <div class="payout-multiplier gold-text">× 100</div>
+                            <p>Si apuestas al número 63 (Comodín) y este sale ganador.</p>
+                            <div class="payout-example">
+                                <strong>Ejemplo:</strong> Apuestas 10 Bs → Ganas <span class="gold">1.000 Bs</span>
+                            </div>
+                            <div class="payout-badge">¡PREMIO MAYOR!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horarios -->
+            <div class="rule-card theme-white-green">
+                <div class="rule-header">
+                    <span class="rule-icon">🕐</span>
+                    <h2>Horarios de Sorteo</h2>
+                </div>
+                <div class="rule-content">
+                    <p>Se realizan <strong>10 sorteos diarios</strong> en vivo, de <strong>Lunes a Domingo</strong>:</p>
+
+                    <div class="schedule-visual">
+                        <div class="schedule-row">
+                            <span class="schedule-period">Mañana</span>
+                            <div class="schedule-times">
+                                <span class="time-badge">09:00 AM</span>
+                                <span class="time-badge">10:00 AM</span>
+                                <span class="time-badge">11:00 AM</span>
+                            </div>
+                        </div>
+                        <div class="schedule-row">
+                            <span class="schedule-period">Tarde</span>
+                            <div class="schedule-times">
+                                <span class="time-badge">12:00 PM</span>
+                                <span class="time-badge">01:00 PM</span>
+                                <span class="time-badge">02:00 PM</span>
+                                <span class="time-badge">03:00 PM</span>
+                                <span class="time-badge">04:00 PM</span>
+                                <span class="time-badge">05:00 PM</span>
+                                <span class="time-badge">06:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animales -->
+            <div class="rule-card theme-white">
+                <div class="rule-header">
+                    <span class="rule-icon">🦁</span>
+                    <h2>Los Animalitos</h2>
+                </div>
+                <div class="rule-content">
+                    <p>La lista completa va del <strong>00 al 63</strong>. Algunos ejemplos destacados:</p>
+
+                    <div class="animals-showcase">
+                        <div class="animal-category">
+                            <h4>🌊 Especiales</h4>
+                            <div class="animal-items">
+                                <span class="animal-tag special">00 - Ballena</span>
+                                <span class="animal-tag special">0 - Delfín</span>
+                            </div>
+                        </div>
+                        <div class="animal-category">
+                            <h4>🏆 Clásicos</h4>
+                            <div class="animal-items">
+                                <span class="animal-tag">1 - Carnero</span>
+                                <span class="animal-tag">10 - Tigre</span>
+                                <span class="animal-tag">17 - Pavo</span>
+                                <span class="animal-tag">28 - Zamuro</span>
+                                <span class="animal-tag">36 - Conejo</span>
+                            </div>
+                        </div>
+                        <div class="animal-category">
+                            <h4>🆕 Exclusivos</h4>
+                            <div class="animal-items">
+                                <span class="animal-tag">45 - Tortuga</span>
+                                <span class="animal-tag">54 - Tiburón</span>
+                                <span class="animal-tag">60 - Camaleón</span>
+                            </div>
+                        </div>
+                        <div class="animal-category">
+                            <h4>⭐ El Comodín</h4>
+                            <div class="animal-items">
+                                <span class="animal-tag comodin">63 - Comodín (Paga 1x100)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información Legal Resumida -->
+            <div class="rule-card theme-blue">
+                <div class="rule-header">
+                    <span class="rule-icon">⚖️</span>
+                    <h2>Información Legal</h2>
+                </div>
+                <div class="rule-content">
+                    <div class="legal-grid">
+                        <div class="legal-item">
+                            <span class="legal-label">Operador</span>
+                            <span class="legal-value">Lotería de Guayana</span>
+                        </div>
+                        <div class="legal-item">
+                            <span class="legal-label">Empresa</span>
+                            <span class="legal-value">FDobleA</span>
+                        </div>
+                        <div class="legal-item">
+                            <span class="legal-label">RIF</span>
+                            <span class="legal-value">J-505567942</span>
+                        </div>
+                        <div class="legal-item">
+                            <span class="legal-label">Sitio Web</span>
+                            <span class="legal-value">www.zoologicoactivo.com</span>
+                        </div>
+                        <div class="legal-item">
+                            <span class="legal-label">Redes Sociales</span>
+                            <span class="legal-value">@zoologicoactivo</span>
+                        </div>
+                    </div>
+
+                    <div class="age-warning">
+                        <span class="age-icon">🔞</span>
+                        <div>
+                            <strong>PROHIBIDO PARA MENORES DE 18 AÑOS</strong>
+                            <p>Este juego está destinado exclusivamente para personas mayores de edad. Juega
+                                responsablemente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 DOCUMENTO LEGAL COMPLETO (ANEXO)
+                 ========================================== -->
+            <!-- ==========================================
+                 DOCUMENTO LEGAL COMPLETO (ANEXO)
+                 ========================================== -->
+            <div class="rule-card theme-blue legal-document"
+                style="margin-top: 50px; border-top: 4px solid var(--color-primary);">
+                <div class="legal-content">
+                    <div class="legal-header" style="text-align: center; margin-bottom: 30px;">
+                        <h1 style="font-size: 1.2rem; margin-bottom: 5px;">REPÚBLICA BOLIVARIANA DE VENEZUELA</h1>
+                        <h2 style="font-size: 1.1rem; margin-bottom: 5px;">GOBERNACIÓN DEL ESTADO BOLIVAR</h2>
+                        <h2 style="font-size: 1.1rem; margin-bottom: 15px;">INSTITUTO OFICIAL DE BENEFICENCIA PÚBLICA Y
+                            DE ASISTENCIA SOCIAL DEL ESTADO BOLÍVAR "LOTERIA DE GUAYANA"</h2>
+                        <h3 style="font-size: 1rem; margin-bottom: 10px;">CARACAS, 3 DE NOVIEMBRE DE 2025</h3>
+                        <p class="legal-intro" style="font-style: italic;">Dicta el presente Reglamento del Juego de
+                            Lotería:</p>
+                        <p class="legal-title"
+                            style="font-weight: bold; font-size: 1.5rem; color: var(--color-primary);">"ZOOLÓGICO
+                            ACTIVO"</p>
+                    </div>
+
+                    <div class="legal-chapter">
+                        <h3 style="text-align: center; margin-top: 20px;">CAPÍTULO I</h3>
+                        <h4 style="text-align: center; margin-bottom: 15px;">DISPOSICIONES GENERALES</h4>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">OBJETO</h5>
+                            <p><strong>ARTÍCULO 1.</strong> El presente reglamento tiene por objeto establecer las
+                                bases, normas, condiciones, estructuras y procedimientos que regirán el juego de lotería
+                                denominado <strong>ZOOLÓGICO ACTIVO</strong> a las cuales se adhieren los apostadores,
+                                la cadena de operación y comercialización, así como todos los sujetos involucrados en
+                                dicho juego de lotería.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DENOMINACIÓN DEL JUEGO DE LOTERÍA</h5>
+                            <p><strong>ARTÍCULO 2. ZOOLÓGICO ACTIVO:</strong> Es un juego de lotería tipo figura con
+                                premios fijos, que consiste en sortear al azar de una (1) figura representada por un
+                                animal, que resultará ganadora en cada uno de los actos de sorteos establecidos en sus
+                                diferentes horarios; permitiendo al apostador escoger entre un total de sesenta y cinco
+                                (65) figuras de animales.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DENOMINACIÓN DE LA INSTITUCIÓN OFICIAL DE BENEFICENCIA
+                                PÚBLICA Y ASISTENCIA SOCIAL</h5>
+                            <p><strong>ARTÍCULO 3.</strong> <strong>INSTITUTO OFICIAL DE BENEFICENCIA PÚBLICA Y DE
+                                    ASISTENCIA SOCIAL DEL ESTADO BOLÍVAR "LOTERIA DE GUAYANA"</strong>, en lo sucesivo
+                                <strong>IOBPAS - LOTERIA DE GUAYANA</strong>, es la patrocinante del juego de lotería
+                                denominado <strong>ZOOLÓGICO ACTIVO</strong>.
+                            </p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DENOMINACIÓN DE LA OPERADORA DEL JUEGO DE LOTERÍA</h5>
+                            <p><strong>ARTÍCULO 4.</strong> La Sociedad Mercantil <strong>OPERADORA Y COMERCIALIZADORA F
+                                    DOBLE A, C.A</strong>, con domicilio principal en la ciudad Maracaibo, estado Zulia,
+                                es la sociedad que explota, organiza, gestiona y comercializa el juego de lotería
+                                denominado <strong>ZOOLÓGICO ACTIVO</strong>.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">SITIO WEB OFICIAL DEL IOBPAS Y DE LA OPERADORA LOTERÍAS</h5>
+                            <p><strong>ARTÍCULO 5.</strong> Los sitios Web oficiales de <strong>LA OPERADORA DE JUEGOS
+                                    DE LOTERÍAS</strong> y del <strong>"IOBPAS - LOTERIA DE GUAYANA"</strong>, son los
+                                siguientes:</p>
+                            <ul>
+                                <li><strong>"IOBPAS - LOTERIA DE GUAYANA"</strong>: @loteriadeGUAYANA</li>
+                                <li><strong>OPERADORA DE JUEGOS DE LOTERÍAS</strong>: @ZOOLOGICOACTIVOvzla,
+                                    ZOOLOGICOACTIVO.com</li>
+                            </ul>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DEL DOMICILIO PROCESAL</h5>
+                            <p><strong>ARTÍCULO 6.</strong> Se declara como domicilio especial, exclusivo y excluyente a
+                                la ciudad de Maracaibo, estado Zulia de la República Bolivariana de Venezuela, respecto
+                                de todas las acciones y asuntos judiciales o extrajudiciales, relacionado con el juego
+                                de lotería <strong>ZOOLÓGICO ACTIVO</strong>, a la jurisdicción de cuyos Tribunales de
+                                Justicia se someterán las partes.</p>
+                            <p><strong>PARÁGRAFO PRIMERO:</strong> Los apostadores y demás interesados en este juego de
+                                lotería <strong>ZOOLÓGICO ACTIVO</strong> renuncian a su domicilio natural, de
+                                conformidad al artículo 32 del Código Civil.</p>
+                            <p><strong>PARÁGRAFO SEGUNDO:</strong> En todo lo referente al juego de lotería
+                                <strong>ZOOLÓGICO ACTIVO</strong>, El <strong>"IOBPAS - LOTERIA DE GUAYANA"</strong>, LA
+                                OPERADORA y demás interesados deberán dirigirse a la ciudad de Maracaibo, estado Zulia
+                                de la República Bolivariana de Venezuela.
+                            </p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DEFINICIONES</h5>
+                            <p><strong>ARTÍCULO 7.</strong> A los efectos del presente reglamento del juego de lotería
+                                <strong>ZOOLÓGICO ACTIVO</strong> se establecen las siguientes definiciones:
+                            </p>
+                            <ol style="padding-left: 20px;">
+                                <li><strong>APOSTADOR:</strong> Son las personas que pagan el derecho a participar en el
+                                    juego de lotería, ofreciéndosele a cambio un premio en dinero y/o especie, el cual
+                                    ganará sólo si acierta los resultados del juego de lotería, para eso debe dirigirse
+                                    a los Centros de Apuestas autorizados por la Comisión Nacional de Lotería (CONALOT),
+                                    para realizar sus apuestas o crear un perfil en nuestra plataforma y debe cumplir
+                                    con los requisitos y normas que rigen el ordenamiento jurídico venezolano en materia
+                                    de juegos de lotería.</li>
+                                <li><strong>APUESTA:</strong> Adquisición de billete, boleto o ticket respaldados o
+                                    emitidos por las Instituciones Oficiales de Beneficencia Pública y Asistencia
+                                    Social.</li>
+                                <li><strong>CENTRO DE APUESTA:</strong> Espacios físicos acondicionados adecuadamente
+                                    para la comercialización directa al comprador, apostador y público en general, de
+                                    los distintos tipos de modalidades o juegos de lotería, mediante el pago del valor
+                                    facial del billete, boleto o ticket, cantidad que en caso de acierto en el juego de
+                                    lotería se recupera aumentada a expensas de las que han perdido quienes no
+                                    acertaron.</li>
+                                <li><strong>CÓDIGO DE AUTORIZACIÓN DE APUESTA:</strong> Son un conjunto de elementos o
+                                    cifras alfanuméricas, códigos de barra que son únicos e irrepetibles que identifican
+                                    y certifican que la apuesta pretendida por el apostador es auténtica y será
+                                    reconocida por LA OPERADORA, confiriéndole valor legal. Estos elementos son los que
+                                    validan la apuesta, en consecuencia, constituyen un mecanismo de control y
+                                    verificación de los Órganos Administrativos.</li>
+                                <li><strong>COMERCIALIZADORA:</strong> Es la persona natural, jurídica o entidades
+                                    económicas de derecho privado, que ejercen actividades de intermediación en la venta
+                                    de juegos de lotería y sus tipos, quienes para poder interactuar comercialmente con
+                                    los demás sujetos que se desempeñen en la actividad, deberán obtener las licencias
+                                    expedidas por las INSTITUCIONES OFICIALES DE BENEFICENCIA PÚBLICA Y ASISTENCIA
+                                    SOCIAL, (IOBPAS) y su correspondiente registro ante la Comisión Nacional de Lotería
+                                    (CONALOT).</li>
+                                <li><strong>FIGURAS:</strong> Juego consistente en la combinación finita de
+                                    representaciones gráficas, animales, objetos, cosas o cualquier otro elemento que
+                                    permite al apostador seleccionar un conjunto de ellas de un total de figuras
+                                    predeterminadas.</li>
+                                <li><strong>IOBPAS:</strong> Instituciones Oficiales de Beneficencia Pública y
+                                    Asistencia Social, son entes creados por el Estado para el ejercicio de las
+                                    actividades de juegos de lotería, que le han sido reservadas de conformidad con lo
+                                    establecido en el artículo 1 de la Ley Nacional de Lotería, a los fines de obtener
+                                    fondos destinados a la beneficencia pública y asistencia social, en los términos y
+                                    condiciones establecidos en la ley.</li>
+                                <li><strong>JUEGO DE LOTERÍA ZOOLÓGICO ACTIVO:</strong> Es un juego de lotería que
+                                    consiste en sortear al azar de una (1) figura representada por un animal,
+                                    permitiendo al apostador escoger entre un total de sesenta y cinco (65) figuras de
+                                    animales.</li>
+                                <li><strong>MEDIO DE APUESTA:</strong> Están constituidos por los boletos, cartones o
+                                    mensajes de datos, mediante los cuales se materializan las apuestas, y cuya
+                                    presentación es suficiente en cuanto a su identificación y a los posibles derechos
+                                    que puedan generar. Los medios de apuestas contienen las combinaciones de números,
+                                    figuras o signos, así como el monto de la apuesta, los cuales son seleccionados por
+                                    el apostado al momento de su expedición. Toda apuesta debe ser respaldada por una
+                                    Institución Oficial de Beneficencia Pública y Asistencia Social.</li>
+                                <li><strong>OPERADORA DE JUEGOS DE LOTERIAS:</strong> Es la persona jurídica o entidad
+                                    económica de derecho privado, que ejerce la actividad de organización, gestión,
+                                    operación, ejecución, realización, y promoción de los distintos tipos de modalidades
+                                    o juegos de lotería, términos y condiciones, de conformidad con lo previsto en la
+                                    Ley Nacional de Lotería, todo ello en razón a la licencia y autorización conferida
+                                    por la Institución de Beneficencia Pública y Asistencia Social, y el debido registro
+                                    de ésta ante la Comisión Nacional de Lotería (CONALOT).</li>
+                                <li><strong>PREMIO:</strong> Es lo obtenido por el acierto en los resultados del acto de
+                                    sorteo del juego de lotería ZOOLÓGICO ACTIVO y dan derecho al ganador a cobrar el
+                                    premio obtenido.</li>
+                                <li><strong>SORTEOS:</strong> Son actos públicos mediante el cual se lleva a cabo la
+                                    realización del juego de lotería, bajo la extracción al azar de una figura, a través
+                                    de sorteos realizados por máquinas de extracción de esferas o sistemas electrónicos
+                                    de sorteos.</li>
+                                <li><strong>RIFA "ZOOLÓGICO ACTIVO":</strong> Actividad eventual e intermitente de
+                                    juegos de envite y azar conexa al juego de lotería "ZOOLÓGICO ACTIVO", y consiste en
+                                    aquellos eventos donde la OPERADORA DE JUEGOS DE LOTERÍAS, programa actividades
+                                    relacionadas al juego "ZOOLÓGICO ACTIVO" de forma conexa, a fin de ofrecer
+                                    oportunidades a los apostadores cuyos billetes, boletos o tickets no resulten
+                                    ganadores o favorecidos en los actos de sorteos ofreciendo premios en especie.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="legal-chapter" style="margin-top: 40px;">
+                        <h3 style="text-align: center; margin-top: 20px;">CAPÍTULO II</h3>
+                        <h4 style="text-align: center; margin-bottom: 15px;">DEL JUEGO</h4>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">CARACTERÍSTICAS DEL JUEGO DE LOTERÍA</h5>
+                            <p><strong>ARTÍCULO 8. ZOOLÓGICO ACTIVO:</strong> Es un juego de lotería con premios fijos,
+                                que consiste en sortear al azar una (1) figura representada por un animal, que resultará
+                                ganadora en cada uno de los actos de sorteos establecidos en sus diferentes horarios,
+                                permitiendo al apostador seleccionar entre un total de sesenta y cinco (65) figuras de
+                                animales. Cada figura de animal estará asociada con un (1) número, que va desde el cero
+                                (0) hasta sesenta y tres (63), ambos inclusive, adicionalmente, contará con el cero cero
+                                (00). El juego de lotería ZOOLÓGICO ACTIVO está compuesto de la siguiente manera:</p>
+                            <ul>
+                                <li><strong>ZOOLÓGICO ACTIVO ANIMAL:</strong> El apostador debe seleccionar en su
+                                    apuesta, una (1) figura de un animal correspondiente a una matriz de sesenta y cinco
+                                    (65) figuras de animales dispuestas para tal fin, pudiendo realizar cuantas apuestas
+                                    desee. Existiendo un (1) PREMIOS ESPECIALES, correspondiente al acierto de la figura
+                                    del ZOLÓGICO ACTIVO que estará asociada al numero 63. Si el apostador logra acertar
+                                    la figuras seleccionada será acreedor del premio especial.</li>
+                            </ul>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LA TOTALIDAD DE LAS FIGURAS DE LOS ANIMALITOS</h5>
+                            <p><strong>ARTÍCULO 9.</strong> Las sesenta y cinco (65) figuras de animales que serán
+                                utilizados para la realización de los actos del sorteo del juego de lotería ZOOLÓGICO
+                                ACTIVO, son los siguientes:</p>
+
+                            <div style="overflow-x: auto; margin: 20px 0;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">N°
+                                        </th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">
+                                            ANIMAL</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">N°
+                                        </th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">
+                                            ANIMAL</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">N°
+                                        </th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">
+                                            ANIMAL</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">N°
+                                        </th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; background-color: #f5f5f5;">
+                                            ANIMAL</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>0</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Delfín</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>19</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Cabra</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>39</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Gavilán</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">59</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Pantera</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>00</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Ballena</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>20</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Cochino</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>40</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Halcón</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">60</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Camaleon</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>1</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Carnero</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>21</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Gallo</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>41</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Pelicano</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">61</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Panda</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>2</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Toro</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>22</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Camello</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>42</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Garza</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">62</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Cachicamo</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>3</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Ciempiés</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>23</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Cebra</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>43</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Canguro</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">63</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">ZOOLÓGICO ACTIVO</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>4</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Alacrán</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>24</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Iguana</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>44</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Culebra</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>5</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">León</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>25</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Gallina</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>45</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Tortuga</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>6</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Sapo</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>26</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Vaca</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>46</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Corocoro</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>7</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Loro</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>27</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Perro</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>47</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Avestruz</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>8</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Ratón</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>28</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Zamuro</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>48</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Coyote</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>9</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Águila</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>29</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Elefante</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>49</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Pingüino</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>10</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Tigre</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>30</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Caimán</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>50</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Cisne</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>11</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Gato</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>31</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Lapa</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>51</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Búho</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>12</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Caballo</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>32</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Ardilla</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>52</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Lobo</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>13</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Mono</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>33</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Pescado</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>53</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Ganso</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>14</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Paloma</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>34</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Venado</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>54</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Tiburón</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>15</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Zorro</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>35</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Jirafa</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>55</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Gacela</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>16</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Oso</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>36</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Conejo</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>56</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Hiena</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>17</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Pavo</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>37</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Colibrí</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>57</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Buitre</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>18</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Burro</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>38</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Flamenco</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"><strong>58</strong></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Bisonte</td>
+                                        <td colspan="2" style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">HORARIOS DE LOS SORTEOS</h5>
+                            <p><strong>ARTÍCULO 10:</strong> Los actos del sorteo del juego de lotería ZOOLÓGICO ACTIVO
+                                se realizarán los días: LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO Y DOMINGO, en
+                                los siguientes horario:</p>
+                            <p><strong>MAÑANA:</strong><br>
+                                "ZOOLÓGICO ACTIVO" 09:30 A.M<br>
+                                "ZOOLÓGICO ACTIVO" 10:30 A.M<br>
+                                "ZOOLÓGICO ACTIVO" 11:30 A.M</p>
+                            <p><strong>TARDE:</strong><br>
+                                "ZOOLÓGICO ACTIVO" 12:30 P.M<br>
+                                "ZOOLÓGICO ACTIVO" 01:30 P.M<br>
+                                "ZOOLÓGICO ACTIVO" 04:30 P.M<br>
+                                "ZOOLÓGICO ACTIVO" 05:30 P.M</p>
+                            <p><strong>NOCHE:</strong><br>
+                                "ZOOLÓGICO ACTIVO" 06:30 P.M<br>
+                                "ZOOLÓGICO ACTIVO" 07:30 P.M<br>
+                                "ZOOLÓGICO ACTIVO" 08:30 P.M</p>
+                            <p><strong>PARÁGRAFO ÚNICO:</strong> Los días 25 de diciembre y 1º de enero, jueves y
+                                viernes Santos, lunes y martes de Carnaval, no se celebrarán sorteos del juego de
+                                loterías ZOOLÓGICO ACTIVO.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">PRESENCIA DEL FUNCIONARIO</h5>
+                            <p><strong>ARTÍCULO 12.</strong> Los actos de los sorteos del juego de lotería ZOOLÓGICO
+                                ACTIVO se realizarán en presencia de las autoridades competentes, quienes darán fe
+                                pública de lo realizado y dejarán constancia de su veracidad en el acta correspondiente.
+                                Los resultados serán informados al público a través de los medios de comunicación social
+                                nacional y las plataformas digitales, tal como lo establecen los artículos 14 y 25 de la
+                                Ley Nacional de Lotería. Si LA OPERADORA DE JUEGOS DE LOTERÍAS decidiere realizar los
+                                actos de sorteos en horas diferentes a las establecidas, deberá contar previamente con
+                                la debida autorización y aprobación del "IOBPAS - LOTERIA DE GUAYANA", y la Comisión
+                                Nacional de Lotería (CONALOT), y subsiguientemente informar al público apostador a
+                                través de los medios de comunicación social nacional y plataformas digitales; tal como
+                                lo establecen los artículos 14 y 25 de la Ley Nacional de Lotería.</p>
+                            <p><strong>PARÁGRAFO ÚNICO:</strong> Concluido el acto de sorteo, se procederá a dejar
+                                constancia del resultado del mismo en acta levantada al efecto, que suscribirán las
+                                autoridades asistentes al acto En caso de ausencia del representante del "IOBPAS -
+                                LOTERIA DE GUAYANA", o de LA OPERADORA DE JUEGOS DE LOTERÍAS, firmarán el ACTA dos (2)
+                                personas escogidas entre los asistentes como testigos del acto de sorteo, si los
+                                hubiere.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">VALIDEZ DEL SORTEO</h5>
+                            <p><strong>ARTÍCULO 13.</strong> Los resultados alcanzados en el acto del sorteo serán
+                                válidos sólo cuando se posicionen y se mantengan los resultados de la figura del animal,
+                                permitiendo al funcionario competente la lectura clara y precisa del cual dará fe
+                                pública y quedará asentado en el ACTA correspondiente.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">PUBLICACIÓN DE LOS RESULTADOS</h5>
+                            <p><strong>ARTÍCULO 14.</strong> En caso de error en las publicaciones o anuncios de los
+                                resultados Oficiales de los sorteos a través de medios de comunicación como prensa,
+                                radio, televisión o páginas web, en caso de surgir cualquier duda o controversia, LA
+                                OPERADORA DE JUEGOS DE LOTERÍAS, el "IOBPAS - LOTERIA DE GUAYANA", COMERCIALIZADORES,
+                                CENTROS DE APUESTA y los APOSTADORES, se someterán única y exclusivamente al resultado
+                                que conste en el acta original del respectivo acto de sorteo y a lo que se establezca en
+                                el presente reglamento del juego de lotería ZOOLÓGICO ACTIVO que se encuentre vigente en
+                                la fecha del acto de sorteo respectivo.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">SISTEMA AUTORIZADO PARA LA REALIZACIÓN DEL ACTO DE SORTEO
+                            </h5>
+                            <p><strong>ARTÍCULO 15.</strong> Para la realización de cada acto del sorteo del juego de
+                                lotería ZOOLÓGICO ACTIVO se utilizará o emplearan máquinas de extracción de esferas o un
+                                software desarrollado de manera especial para tal efecto, debidamente autorizado por el
+                                organismo competente en materia de metrología, SERVICIO DESCONCENTRADO NACIONAL DE
+                                NORMALIZACIÓN, CALIDAD, METROLOGÍA Y REGLAMENTOS TÉCNICOS (SENCAMER).</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LA SUSPENSIÓN POR DESPERFECTO</h5>
+                            <p><strong>ARTÍCULO 16.</strong> En caso de que la maquina de extracción de esferas o el
+                                sistema de sorteo electrónico debidamente certificado por el órgano con competencia en
+                                materia de metrología que se utilice para el acto de sorteo del juego de lotería
+                                ZOOLÓGICO ACTIVO sufra algún desperfecto técnico que imposibilite la realización del
+                                sorteo, en los términos establecidos en el presente reglamento, se utilizará o se
+                                sustituirá por otro sistema de sorteo electrónico con similares características y
+                                respectivamente certificado por el órgano competente en materia de metrología, que debe
+                                estar disponible antes del acto de sorteo. Si éste también se averiare, el sorteo podrá
+                                ser suspendido. Posteriormente deberá enviar informe técnico al "IOBPAS - LOTERIA DE
+                                GUAYANA" y a la CONALOT de la circunstancia que dieron origen al desperfecto.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">CAUSA DE SUSPENSIÓN DE LOS SORTEOS</h5>
+                            <p><strong>ARTÍCULO 17.</strong> El acto de sorteo deberá ser suspendido en el caso que
+                                mediase alguna causa fortuita o fuerza mayor. A tales efectos las autoridades
+                                competentes levantarán un ACTA pormenorizada sobre los hechos que dieran lugar a la
+                                suspensión. Acto seguido LA OPERADORA DE JUEGOS DE LOTERÍAS, deberá solicitar al "IOBPAS
+                                - LOTERIA DE GUAYANA" y a la Comisión Nacional de Lotería (CONALOT) la respectiva
+                                autorización para la reanudación del acto de sorteo. Una vez autorizada la continuación,
+                                LA OPERADORA DE JUEGOS DE LOTERÍAS deberá informar al público apostador a través de los
+                                medios de comunicación social nacional y las plataformas digitales el día y la hora en
+                                que se llevará a cabo la reanudación del acto del sorteo.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">PROBABILIDADES DE GANAR</h5>
+                            <p><strong>ARTÍCULO 18.</strong> La probabilidad total de ganar un premio en el juego de
+                                lotería ZOOLÓGICO ACTIVO es de: Cuatro comas sesenta y un por ciento (4,61%) de
+                                probabilidades de acierto.</p>
+                        </div>
+                    </div>
+
+                    <div class="legal-chapter" style="margin-top: 40px;">
+                        <h3 style="text-align: center; margin-top: 20px;">CAPÍTULO III</h3>
+                        <h4 style="text-align: center; margin-bottom: 15px;">DEL PREMIO</h4>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">TIPO DE PREMIO</h5>
+                            <p><strong>ARTÍCULO 19.</strong> Queda establecido que el juego de lotería denominado
+                                ZOOLÓGICO ACTIVO es un juego de lotería con sorteos de premios fijos:</p>
+                            <ul>
+                                <li><strong>ZOOLÓGICO ACTIVO ANIMAL:</strong> Cuando el apostador materialice su apuesta
+                                    y posteriormente acierte la extracción aleatoria de una (1) figura de un animal
+                                    correspondiente a una matriz de sesenta y cinco (65) figuras de animales, tendrá una
+                                    premiación de cuarenta (40) veces lo apostado.</li>
+                            </ul>
+                            <p><strong>PREMIOS ESPECIALES:</strong></p>
+                            <p>A) <strong>Por aproximación</strong>, donde resultaran ganadores aquellos apostadores
+                                cuyos tickets o boletos se correspondan con un número y su figura de animal
+                                correspondiente inmediatamente inferior o superior al de la extracción aleatoria
+                                acertada.</p>
+                            <p>B) <strong>El premio mayor</strong> le corresponde a aquel apostador cuyo ticket o boleto
+                                se corresponda con el numero 63 denominado ZOOLÓGICO ACTIVO, caso en el cual, dicho
+                                apostador será ganador de un premio equivalente de cien (100) veces lo apostado.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">VALOR Y TIPO DE MONEDA PARA EL PAGO DE LA APUESTA</h5>
+                            <p><strong>ARTÍCULO 20.</strong> El monto mínimo para realizar la apuesta del juego de
+                                lotería ZOOLÓGICO ACTIVO, es de un bolívar (Bs. 1,00). La OPERADORA DE JUEGOS DE
+                                LOTERÍAS queda ampliamente facultada para modificar el monto de la apuesta en razón de
+                                las exigencias del mercado.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">FORMA Y LAPSO PARA EL PAGO DE LOS PREMIOS</h5>
+                            <p><strong>ARTÍCULO 21.</strong> Para el pago de premios se requiere la presentación del
+                                respectivo medio de apuesta, contentivo de la figura del animal ganador, el cual deberá
+                                ser validado en el centro de apuesta, donde el apostador realizó su apuesta durante las
+                                horas de operación del sistema de ventas, en el término de los cinco (5) días hábiles,
+                                contados a partir del día siguiente al día de la celebración del respectivo acto de
+                                sorteo.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LOS INTERESES Y CORRECCIONES MONETARIAS</h5>
+                            <p><strong>ARTÍCULO 22.</strong> El pago de premios correspondientes al juego de lotería
+                                ZOOLÓGICO ACTIVO estará sujeto a la retención del porcentaje de los impuestos
+                                establecidos en la Ley y en ningún caso generan intereses ni estarán sujetos a
+                                corrección monetaria ni ajustes por inflación.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">RETENCIÓN DE IMPUESTO</h5>
+                            <p><strong>ARTÍCULO 23.</strong> Se aplicará la retención del 16% por concepto de ganancias
+                                fortuitas de acuerdo a lo establecido en el artículo 61 del Decreto Nº 2.163, mediante
+                                el cual se dicta el Decreto con Rango, Valor y Fuerza de Ley de Reforma parcial Decreto
+                                con Rango, Valor y Fuerza de Ley de Impuesto Sobre la Renta, publicada en la Gaceta
+                                Oficial Nº 6.210 Extraordinario de fecha 30 de diciembre de 2015, concatenado con el
+                                artículo 9 numeral 11, literal b, del Reglamento Parcial de la Ley de Impuesto Sobre la
+                                Renta en Materia de Retenciones.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">CADUCIDAD PARA EL DERECHO DEL COBRO AL PREMIOS</h5>
+                            <p><strong>ARTÍCULO 24.</strong> El derecho a cobrar premio caducará a las doce de la noche
+                                (12:00 p.m) del quinto (5) día hábil, contados a partir del día siguiente al día de la
+                                celebración del respectivo sorteo. Vencido el término de caducidad establecido, se
+                                extingue para el apostador/ganador todo derecho a reclamo de pago de premios.</p>
+                            <p><strong>PARÁGRAFO ÚNICO:</strong> El premio será pagado a la persona que demuestre su
+                                condición de ganador y será indispensable la entrega del medio de apuesta original. El
+                                comercializador constatará o verificará su validez, y exigirá el cumplimiento de las
+                                normas previstas en el presente reglamento, es condición indispensable para cobrar un
+                                premio, que todo ganador deberá presentar sus documentos de identificación.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DERECHO A RECLAMO</h5>
+                            <p><strong>ARTÍCULO 25.</strong> Los apostadores que se consideren con derecho a reclamo,
+                                deberán dirigirse personalmente al centro de apuestas en que realizaron su apuesta o a
+                                través de la oficina de LA OPERADORA DE JUEGOS DE LOTERÍAS, ubicada en la Av. 13 A entre
+                                75 y 76 Edificio CARLINE Piso 1, Local 1-1 y 1-2, sector Tierra Negra, Maracaibo estado
+                                Zulia. Toda reclamación formulada a LA OPERADORA DE JUEGOS DE LOTERÍAS deberá realizarse
+                                de lunes a viernes, de 9:00 a.m. a 11:00 a.m., dentro del plazo máximo e improrrogable
+                                de cinco (05) días hábiles siguientes de haber tenido conocimiento de la causa que da
+                                derecho al reclamo. Igualmente podrá enviar vía correo electrónico dicha información a
+                                la siguiente dirección: <a
+                                    href="mailto:RECLAMOZOOLOGICOACTIVO24@gmail.com">RECLAMOZOOLOGICOACTIVO24@gmail.com</a>.
+                                En caso de no firmar el escrito de reclamación o no anexe copia de la cédula de
+                                identidad o pasaporte, no se le dará curso a la misma, ni se admitirá la reclamación, el
+                                medio de apuesta deberá cumplir con lo establecido en el parágrafo único del artículo 26
+                                del presente reglamento.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">REQUISITOS PARA REALIZAR EL RECLAMO</h5>
+                            <p><strong>ARTÍCULO 26.</strong> Para que se admita el reclamo, el interesado deberá
+                                consignar el original del medio de apuesta, objeto de reclamación, un oficio de
+                                explicación de motivos y fotocopia de su cédula de identidad o pasaporte.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">LAPSO DE RESPUESTA AL RECLAMO</h5>
+                            <p><strong>ARTÍCULO 27.</strong> LA OPERADORA DE JUEGOS DE LOTERÍAS tendrá un lapso de
+                                quince (15) días continuos para dar respuesta al reclamo, contados a partir del día
+                                siguiente a la fecha del reclamo formulado.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LAS OBLIGACIONES POR CONVENIOS CONCERTADOS ANTE TERCEROS
+                            </h5>
+                            <p><strong>ARTÍCULO 28.</strong> El "IOBPAS - LOTERIA DE GUAYANA" y LA OPERADORA DE JUEGOS
+                                DE LOTERÍAS, no asumirán obligaciones por convenios concertados por los apostadores con
+                                terceras personas para el cobro de los premios.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LAS CONTROVERSIAS</h5>
+                            <p><strong>ARTÍCULO 29.</strong> En caso de surgir cualquier duda o controversia, el "IOBPAS
+                                - LOTERIA DE GUAYANA", LA OPERADORA DE JUEGOS DE LOTERÍAS y los apostadores se someterán
+                                para todos los efectos, única y exclusivamente, a lo establecido en el presente
+                                reglamento, y a lo que conste en el ACTA del acto de sorteo respectivo.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">PUBLICIDAD DE LOS GANADORES</h5>
+                            <p><strong>ARTÍCULO 30.</strong> Ciertos ganadores según criterio de LA OPERADORA DE JUEGOS
+                                DE LOTERÍAS, deberán dar su testimonio con respecto al premio obtenido en el juego de
+                                lotería ZOOLÓGICO ACTIVO, el cual será recogido y difundido mediante una campaña
+                                publicitaria, sin que esto implique pago alguno por parte de LA OPERADORA DE JUEGOS DE
+                                LOTERÍAS con la finalidad de demostrar al público apostador la transparencia y
+                                responsabilidad del juego de lotería ZOOLÓGICO ACTIVO; sin perjuicio que LA OPERADORA DE
+                                JUEGOS DE LOTERÍAS pueda exigir el cumplimiento de estos requisitos en caso de premios
+                                menores. El ganador acepta que hasta tanto no manifieste su testimonio en la publicidad
+                                solicitada, el pago del premio permanecerá suspendido.</p>
+                        </div>
+                    </div>
+
+                    <div class="legal-chapter" style="margin-top: 40px;">
+                        <h3 style="text-align: center; margin-top: 20px;">CAPÍTULO IV</h3>
+                        <h4 style="text-align: center; margin-bottom: 15px;">DE LA APUESTA</h4>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">MEDIO DE APUESTA</h5>
+                            <p><strong>ARTÍCULO 31.</strong> El medio de apuesta es el instrumento válido para
+                                participar en el juego de lotería ZOOLÓGICO ACTIVO, el cual es de carácter físico,
+                                destinado a contener las figuras de animales y confiere el derecho a la persona que paga
+                                el valor de la apuesta a adquirir el premio si acierta los resultados obtenidos en el
+                                acto de sorteo respectivo.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">CARACTERÍSTICAS DEL MEDIO DE APUESTA</h5>
+                            <p><strong>ARTÍCULO 32.</strong> En cada centro de apuesta las unidades de comercialización
+                                o máquinas expendedoras especializadas, destinadas para la comercialización del juego de
+                                lotería emitirán un medio de apuesta que contendrán:</p>
+                            <ul>
+                                <li>Identificación de la OPERADORA DE JUEGOS DE LOTERIAS</li>
+                                <li>Identificación del juego de lotería ZOOLÓGICO ACTIVO.</li>
+                                <li>Datos del Centro de Apuesta.</li>
+                                <li>Figura de animal apostado.</li>
+                                <li>Monto en bolívares de la apuesta realizada.</li>
+                                <li>Fecha y hora de la venta de los actos de sorteo.</li>
+                                <li>Código de seguridad que permitirá validar la apuesta.</li>
+                                <li>Lapso de caducidad para el pago del premio.</li>
+                                <li>Código de autorización de apuesta único generado por el sistema central de apuesta
+                                    de LA OPERADORA DE JUEGOS DE LOTERÍAS.</li>
+                                <li>Número del serial único y correlativo y/o código de barra del medio de apuesta.</li>
+                            </ul>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LA APUESTA</h5>
+                            <p><strong>ARTÍCULO 33.</strong> Las apuestas se realizarán a través de los centros de
+                                apuestas autorizados para la venta de los medios de apuesta del juego de lotería
+                                ZOOLÓGICO ACTIVO, las apuestas podrán ser realizadas hasta cinco (5) minutos antes de la
+                                realización de cada del sorteo. Los centros de apuestas vendedores del juego de lotería
+                                ZOOLÓGICO ACTIVO de manera independientes asumen la responsabilidad por los problemas
+                                asociados a la explotación independiente del juego de lotería.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">ARTÍCULO 34.</h5>
+                            <p>Sólo serán válidas las apuestas que se encuentren debidamente registradas con su
+                                correspondiente código de autorización de apuesta en el sistema central de apuestas de
+                                LA OPERADORA DE JUEGOS DE LOTERÍAS y en el sistema de recepción de data del "IOBPAS -
+                                LOTERIA DE GUAYANA", el código de autorización de apuesta es el único elemento que
+                                certifica que el medio de apuesta ha sido registrado y es legal.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">ARTÍCULO 35.</h5>
+                            <p>Si el apostador hiciere dos (2) o más apuestas en un mismo medio de apuesta, ellas serán
+                                independientes entre sí, deberán aparecer impresas horizontalmente una debajo de la otra
+                                y cada una deberá tener su monto de apuesta en bolívares.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">ARTÍCULO 36.</h5>
+                            <p>Las apuestas realizadas por los apostadores ante el centro de apuestas que tengan la
+                                correspondiente autorización o Licencia emitida por el "IOBPAS - LOTERIA DE GUAYANA", y
+                                que se encuentren debidamente registradas por la Comisión Nacional de Lotería (CONALOT),
+                                se harán a través de las unidades de comercialización autorizadas, y serán transmitidas
+                                por el comercializador para su autorización por parte de LA OPERADORA DE JUEGOS DE
+                                LOTERÍAS y deberán cumplir con las normas previstas en la Ley Nacional de Lotería
+                                (CONALOT), Providencias, Normativa aplicable y el presente reglamento.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">PROVIDENCIA ADMINISTRATIVA DEL SENIAT</h5>
+                            <p><strong>ARTÍCULO 37.</strong> El medio de apuesta del juego de lotería ZOOLÓGICO ACTIVO
+                                estará conformado como una factura de acuerdo con los requisitos establecidos en el
+                                artículo 13 de la Providencia Administrativa N° 0102, publicada en la Gaceta Oficial de
+                                la República Bolivariana de Venezuela Nº 39.290 de fecha 22 de octubre de 2009 dictada
+                                por el Servicio Nacional Integrado de Administración Aduanera y Tributaria (SENIAT). Los
+                                requisitos contenidos en la citada providencia podrán variar ajustándose a las
+                                exigencias que al efecto se dicten a través de la providencia administrativa y/o
+                                instrucciones emanadas de los organismos competente de conformidad con la ley especial
+                                que rige la metería.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">CONDICIONES DE PAGO PARA OBTENER EL MEDIO DE APUESTA</h5>
+                            <p><strong>ARTÍCULO 38:</strong> El apostador debe pagar el monto del medio de apuesta en
+                                Bolívares por ser la moneda de circulación legal en el País.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LA RESPONSABILIDAD DE LOS CENTROS DE APUESTA</h5>
+                            <p><strong>ARTÍCULO 39:</strong> Los vendedores del juego de lotería ZOOLÓGICO ACTIVO son
+                                comerciantes independientes y asumen la total responsabilidad de las operaciones a su
+                                cargo. LA OPERADORA DE JUEGOS DE LOTERÍAS y el "IOBPAS - LOTERIA DE GUAYANA", son
+                                responsables solidarios de cualquier reclamación derivada de sus actuaciones.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">PROHIBICIONES</h5>
+                            <p><strong>ARTÍCULO 40.</strong> Se prohíbe la venta de medios de apuesta del juego de
+                                lotería ZOOLÓGICO ACTIVO, a los niños, niñas y adolescentes, de conformidad con lo
+                                establecido en el parágrafo único del artículo 92 de la Ley Orgánica de Protección para
+                                el Niños, Niñas y Adolescentes (LOPNNA). Asimismo, los centros apuestos prohibirán el
+                                ingreso a los espacios físicos destinados a la explotación de la actividad de lotería, a
+                                los niños, niña y adolescente; cumpliendo así, con lo establecido en el artículo 229 de
+                                la mencionada Ley.</p>
+                        </div>
+                    </div>
+
+                    <div class="legal-chapter" style="margin-top: 40px;">
+                        <h3 style="text-align: center; margin-top: 20px;">CAPÍTULO V</h3>
+                        <h4 style="text-align: center; margin-bottom: 15px;">DISPOSICIONES FINALES</h4>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">GARANTES DE LA EJECUCIÓN Y LA OPERACIÓN DEL JUEGO DE LOTERÍA
+                            </h5>
+                            <p><strong>ARTÍCULO 41.</strong> El "IOBPAS - LOTERIA DE GUAYANA" conjuntamente con LA
+                                OPERADORA DE JUEGOS DE LOTERÍAS, son los garantes de la realización del acto de sorteo
+                                del juego de lotería ZOOLÓGICO ACTIVO, en cumplimiento del presente reglamento.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">CLÁUSULA DE ADHESIÓN</h5>
+                            <p><strong>ARTÍCULO 42.</strong> El hecho de participar en el juego de lotería ZOOLÓGICO
+                                ACTIVO implica, por parte del apostador, su aceptación y su adhesión a las normas
+                                previstas en el presente reglamento del juego de lotería ZOOLÓGICO ACTIVO.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">DE LA APUESTA RESPONSABLE</h5>
+                            <p><strong>ARTÍCULO 43.</strong> La apuesta responsable, consiste en que el apostador
+                                realiza sus apuestas de forma consciente y responsable, que los fines principales versen
+                                sobre la recreación y el entretenimiento, en la que el monto apostado infiere solo en la
+                                participación y no en la dilapidación de la posición económica del apostador.</p>
+                        </div>
+
+                        <div class="legal-article" style="margin-bottom: 15px;">
+                            <h5 style="font-weight: bold;">MODIFICACIÓN DE REGLAMENTO</h5>
+                            <p><strong>ARTÍCULO 44.</strong> El presente reglamento entrará en vigencia a partir de la
+                                fecha de publicación de su texto íntegro, por dos (2) veces, con intervalo de tres (3)
+                                días en diario de circulación nacional de acuerdo a lo establecido en el artículo 24 de
+                                la Ley Nacional de Lotería y previa aprobación recibida por El "IOBPAS - LOTERIA DE
+                                GUAYANA".</p>
+                            <p>Dado, firmado y sellado en la sala de sesiones del INSTITUTO OFICIAL DE BENEFICENCIA
+                                PÚBLICA Y DE ASISTENCIA SOCIAL DEL ESTADO BOLÍVAR "LOTERIA DE GUAYANA". En Guayana, a
+                                los catorce (14) días del mes de julio del año 2024.</p>
+                        </div>
+
+                        <div class="signature" style="margin-top: 40px; text-align: center;">
+                            <p><strong> EL INSTITUTO OFICIAL DE BENEFICENCIA PÚBLICA Y DE ASISTENCIA SOCIAL DEL ESTADO
+                                    BOLÍVAR "LOTERIA DE GUAYANA"</strong></p>
+                            <div class="signature-box">
+                                <p class="signature-line">___________________________</p>
+                                <p class="signature-name"><strong>Dr. XXXXXXXXXXXXXXXX</strong><br>PRESIDENTE</p>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-top: 20px;">Según Decreto Nº 111/2022, de fecha 22 de
+                                marzo de 2022, publicado en Gaceta Oficial del Estado XXXXXXXXXXXXXX, Extraordinaria Nº
+                                2329, de fecha 22 de marzo de 2022, contenido en Resolución N° 2682/2022, emanada de la
+                                Gobernación del estado XXXXXXXXXXXXXX.</p>
+                            <p style="margin-top: 30px;"><strong>La OPERADORA DE JUEGOS DE LOTERÍAS OPERADORA Y
+                                    COMERCIALIZADORA F DOBLE A, C.A</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="legal-footer-logos"
+                        style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd;">
+                        <p style="margin-bottom: 15px;">Comercializadora Oficial:</p>
+                        <img src="images/FDAA.png" alt="FDA Comercializadora" class="fda-logo"
+                            style="max-height: 80px; width: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER (PIE DE PÁGINA)
+         Enlaces legales, redes sociales e información de contacto.
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="images/logo zoolo sinf.png" alt="Zoológico Activo" class="logo-img">
+                    </div>
+                    <p class="footer-slogan">Donde la transparencia es tu suerte segura</p>
+                    <div class="footer-logos">
+                        <img src="images/loteria de guyana.png" alt="Lotería de Guayana" class="footer-logo">
+                        <img src="images/conalot logo.png" alt="Conalot" class="footer-logo">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="resultados.html">Resultados</a></li>
+                        <li><a href="reglamento.html">Reglamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h4>Información</h4>
+                    <p><strong>Operador:</strong> Lotería de Guayana</p>
+                    <p><strong>RIF:</strong> J-505567942</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="age-restriction">
+                    <span class="age-badge">18+</span>
+                    <span>Prohibido para menores de 18 años</span>
+                </div>
+                <p class="copyright">© 2025 Zoológico Activo - Todos los derechos reservados</p>
+                <div class="agency-credit">
+                    <span>Hecho por</span>
+                    <a href="https://www.instagram.com/agenciainmk" target="_blank" class="agency-link">
+                        <img src="images/in svg blanco.svg" alt="IN Agencia" class="agency-logo">
+                        IN Agencia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

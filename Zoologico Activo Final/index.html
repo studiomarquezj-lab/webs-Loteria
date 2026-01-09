@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoológico Activo - Lotería de Guayana</title>
+    <meta name="description"
+        content="Zoológico Activo - Donde la transparencia es tu suerte segura. 10 sorteos diarios, pagos 1x40, 1x4 y 1x100 Comodín.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="ANIMALITOS/63.png">
+</head>
+
+<body>
+    <!-- Partículas flotantes -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ==========================================
+         NAVEGACIÓN PRINCIPAL
+         Menú superior con logo y enlaces a secciones.
+         ========================================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo zoolo sinf.png" alt="Zoológico Activo" class="logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="resultados.html">Resultados</a></li>
+                <li><a href="reglamento.html">Reglamento</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         SECCIÓN HERO (PRINCIPAL)
+         Área destacada con la ruleta animada y cuenta regresiva.
+         ========================================== -->
+    <section class="hero">
+        <!-- ==========================================
+             COMENTARIOS PARA MODIFICACIÓN DE BANNERS
+             Para cambiar el fondo o agregar videos:
+             1. Busque la clase .hero-bg en css/styles.css para cambiar la imagen de fondo.
+             2. Para un video de fondo, reemplace <div class="hero-bg"></div> con:
+                <video autoplay loop muted playsinline class="hero-bg-video">
+                    <source src="ruta/a/tu/video.mp4" type="video/mp4">
+                </video>
+             3. Asegúrese de que el video tenga estilos para cubrir el fondo (object-fit: cover).
+             ========================================== -->
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="roulette-container">
+                    <div class="roulette" id="roulette">
+                        <div class="roulette-center">
+                            <!-- Centro vacío o con icono si se prefiere, la imagen ahora flota encima -->
+                        </div>
+                    </div>
+                    <img src="images/Cococrupier.png" alt="Cococrupier" class="cococrupier-img">
+                    <div class="roulette-glow"></div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-badge">Lotería de Guayana</div>
+                <h1 class="hero-title">
+                    <span class="title-zoo">Zoológico</span>
+                    <span class="title-activo">Activo</span>
+                </h1>
+                <p class="hero-slogan">Donde la transparencia es tu suerte segura</p>
+
+                <div class="payouts">
+                    <div class="payout-item">
+                        <span class="payout-label">Acierto</span>
+                        <span class="payout-value">1x40</span>
+                    </div>
+                    <div class="payout-item">
+                        <span class="payout-label">Aproximación</span>
+                        <span class="payout-value">1x4</span>
+                    </div>
+                    <div class="payout-item payout-comodin">
+                        <span class="payout-label">Comodín</span>
+                        <span class="payout-value">1x100</span>
+                    </div>
+                </div>
+
+                <div class="countdown-container">
+                    <p class="countdown-label">Próximo sorteo en:</p>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="countHours">00</span>
+                            <span class="countdown-unit">Horas</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="countMinutes">00</span>
+                            <span class="countdown-unit">Min</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="countSeconds">00</span>
+                            <span class="countdown-unit">Seg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="hero-buy-btn" id="heroBuyBtn">
+                    <span class="btn-icon">🛒</span>
+                    <span>COMPRAR TICKET</span>
+                </button>
+            </div>
+        </div>
+        <div class="floating-coins" id="floatingCoins"></div>
+    </section>
+
+    <!-- Últimos Resultados -->
+    <section class="last-results">
+        <div class="container">
+            <div class="results-header">
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    LIVE - Últimos Resultados
+                </div>
+                <a href="resultados.html" class="view-all">Ver todos →</a>
+            </div>
+            <div class="results-scroll" id="resultsScroll">
+                <!-- Se llena con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         GRILLA DE ANIMALITOS
+         Tablero interactivo con los 38 animales del juego.
+         ========================================== -->
+    <section class="animals-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">🎯</span>
+                Tablero de Animalitos
+                <div style="font-size: 1rem; color: var(--color-primary-dark); margin-top: 5px;">Zoologico activo</div>
+            </h2>
+            <p class="section-subtitle">65 opciones para apostar - Del 00 al 63</p>
+            <div class="animals-grid" id="animalsGrid">
+                <!-- Se llena con JavaScript -->
+            </div>
+            <div class="animals-legend">
+                <div class="legend-item">
+                    <span class="legend-dot special"></span>
+                    Acierto - Paga 1x 40
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot special"></span>
+                    Aproximación - Paga 1x 4
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot comodin"></span>
+                    Comodín (63) - Paga 1x100
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CARRUSEL DE BANNERS
+         Promociones y anuncios importantes.
+         ========================================== -->
+    <!-- ==========================================
+         HERO BANNER (NUEVO DISEÑO)
+         Banner principal inmersivo con hotspots.
+         ========================================== -->
+    <section class="hero-banner">
+        <div class="banner-bg" id="bannerBg"></div>
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <h1 class="banner-title" id="bannerTitle">Bienvenidos a la Nueva Era</h1>
+            <p class="banner-subtitle" id="bannerSubtitle">Una experiencia más rápida, moderna y segura para tus jugadas
+                en Zoologico Activo.</p>
+
+            <div class="hotspots-container">
+                <div class="hotspot" data-dest="comodin">
+                    <div class="hotspot-label">
+                        <i class="hotspot-icon">⭐</i>
+                        <span>Comodín</span>
+                    </div>
+                    <div class="hotspot-details">
+                        <h3 class="hotspot-title">GANA X 100</h3>
+                        <p class="hotspot-description">Con el COMODÍN (63) multiplicas tu inversión por 100 veces. ¡La
+                            mejor opción para ganar en grande!</p>
+                        <div class="hotspot-stats">
+                            <div class="hotspot-stat">
+                                <span class="hotspot-stat-value">100x</span>
+                                <span>Pago</span>
+                            </div>
+                            <div class="hotspot-stat">
+                                <span class="hotspot-stat-value">63</span>
+                                <span>Número</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotspot" data-dest="aproximados">
+                    <div class="hotspot-label">
+                        <i class="hotspot-icon">↔️</i>
+                        <span>Aproximados</span>
+                    </div>
+                    <div class="hotspot-details">
+                        <h3 class="hotspot-title">Gana con Aproximados</h3>
+                        <p class="hotspot-description">Si tu animal está al lado del ganador en la ruleta, ¡también
+                            ganas! Pagamos 4 veces tu apuesta.</p>
+                        <div class="hotspot-stats">
+                            <div class="hotspot-stat">
+                                <span class="hotspot-stat-value">4x</span>
+                                <span>Pago</span>
+                            </div>
+                            <div class="hotspot-stat">
+                                <span class="hotspot-stat-value">2</span>
+                                <span>Opciones</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotspot" data-dest="compra">
+                    <div class="hotspot-label">
+                        <i class="hotspot-icon">🛒</i>
+                        <span>Compra</span>
+                    </div>
+                    <div class="hotspot-details">
+                        <h3 class="hotspot-title">Compra Zoologico Activo</h3>
+                        <p class="hotspot-description">Realiza tu jugada de forma rápida y segura a través de WhatsApp.
+                        </p>
+                        <div class="hotspot-stats">
+                            <div class="hotspot-stat">
+                                <span class="hotspot-stat-value">FAST</span>
+                                <span>Rápido</span>
+                            </div>
+                            <div class="hotspot-stat">
+                                <span class="hotspot-stat-value">100%</span>
+                                <span>Seguro</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="resultados.html" class="explore-btn">Ver Resultados Ahora</a>
+        </div>
+
+        <div class="location-indicator">
+            <i>📍</i> <span id="currentSection">¡Nueva Web!</span>
+        </div>
+
+        <div class="destinations-nav">
+            <div class="dest-dot active" data-dest="comodin"></div>
+            <div class="dest-dot" data-dest="aproximados"></div>
+            <div class="dest-dot" data-dest="compra"></div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         HORARIOS DE SORTEOS
+         Lista de los sorteos diarios disponibles.
+         ========================================== -->
+    <section class="schedule-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">🕐</span>
+                Horarios de Sorteo
+            </h2>
+            <p class="section-subtitle">10 sorteos diarios de Lunes a Domingo</p>
+            <div class="schedule-grid" id="scheduleGrid">
+                <!-- Se llena con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CALCULADORA DE GANANCIAS
+         Herramienta para estimar premios según la apuesta.
+         ========================================== -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">🧮</span>
+                Calculadora de Ganancias
+            </h2>
+            <p class="section-subtitle">Calcula cuánto puedes ganar con tu apuesta</p>
+
+            <div class="calculator-card">
+                <div class="calc-input-group">
+                    <label>Monto de Apuesta (Bs)</label>
+                    <input type="number" id="betAmount" value="10" min="1" step="1">
+                    <div class="quick-amounts">
+                        <button class="quick-btn" data-amount="1">1 Bs</button>
+                        <button class="quick-btn" data-amount="5">5 Bs</button>
+                        <button class="quick-btn active" data-amount="10">10 Bs</button>
+                        <button class="quick-btn" data-amount="50">50 Bs</button>
+                        <button class="quick-btn" data-amount="100">100 Bs</button>
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <div class="calc-result-item">
+                        <div class="result-icon">🎯</div>
+                        <div class="result-info">
+                            <span class="result-label">Acierto Directo</span>
+                            <span class="result-multiplier">× 40</span>
+                        </div>
+                        <div class="result-value" id="resultDirect">400 Bs</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="result-icon">↔️</div>
+                        <div class="result-info">
+                            <span class="result-label">Por Aproximación</span>
+                            <span class="result-multiplier">× 4</span>
+                        </div>
+                        <div class="result-value" id="resultApprox">40 Bs</div>
+                    </div>
+                    <div class="calc-result-item comodin">
+                        <div class="result-icon">⭐</div>
+                        <div class="result-info">
+                            <span class="result-label">Comodín (63)</span>
+                            <span class="result-multiplier">× 100</span>
+                        </div>
+                        <div class="result-value" id="resultComodin">1.000 Bs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         ESTADÍSTICAS
+         Datos calientes y fríos para ayudar en la jugada.
+         ========================================== -->
+    <section class="stats-section">
+        <div class="stats-bg-coins"></div>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon">📊</span>
+                Estadísticas de Sorteos
+            </h2>
+            <p class="section-subtitle">Animales más y menos frecuentes</p>
+
+            <div class="stats-filter">
+                <button class="filter-btn active" data-days="7">7 días</button>
+                <button class="filter-btn" data-days="14">14 días</button>
+                <button class="filter-btn" data-days="30">30 días</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stats-card hot">
+                    <h3 class="stats-card-title">
+                        <span>🔥</span> Más Frecuentes
+                    </h3>
+                    <div class="stats-list" id="hotList">
+                        <!-- Se llena con JavaScript -->
+                    </div>
+                </div>
+                <div class="stats-card cold">
+                    <h3 class="stats-card-title">
+                        <span>❄️</span> Menos Frecuentes
+                    </h3>
+                    <div class="stats-list" id="coldList">
+                        <!-- Se llena con JavaScript -->
+                    </div>
+                </div>
+                <div class="stats-card comodin-stats">
+                    <h3 class="stats-card-title">
+                        <span>⭐</span> Comodín (63)
+                    </h3>
+                    <div class="comodin-info">
+                        <div class="comodin-stat">
+                            <span class="comodin-value" id="comodinCount">3</span>
+                            <span class="comodin-label">veces salió</span>
+                        </div>
+                        <div class="comodin-stat">
+                            <span class="comodin-value" id="comodinLast">Hace 2 días</span>
+                            <span class="comodin-label">última vez</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ==========================================
+         FOOTER (PIE DE PÁGINA)
+         Enlaces legales, redes sociales e información de contacto.
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="images/logo zoolo sinf.png" alt="Zoológico Activo" class="logo-img">
+                    </div>
+                    <p class="footer-slogan">Donde la transparencia es tu suerte segura</p>
+                    <div class="footer-logos">
+                        <img src="images/loteria de guyana.png" alt="Lotería de Guayana" class="footer-logo">
+                        <img src="images/conalot logo.png" alt="Conalot" class="footer-logo">
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="https://www.instagram.com/zoologicoactivo/?hl=es" target="_blank"
+                            class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="resultados.html">Resultados</a></li>
+                        <li><a href="reglamento.html">Reglamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Juego Responsable</a></li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h4>Información</h4>
+                    <p><strong>Operador:</strong> Lotería de Guayana</p>
+                    <p><strong>Empresa:</strong> FDobleA</p>
+                    <p><strong>RIF:</strong> J-505567942</p>
+                    <p><strong>Web:</strong> www.zoologicoactivo.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="age-restriction">
+                    <span class="age-badge">18+</span>
+                    <span>Prohibido para menores de 18 años</span>
+                </div>
+                <p class="copyright">© 2025 Zoológico Activo - Todos los derechos reservados</p>
+                <div class="agency-credit">
+                    <span>Hecho por</span>
+                    <a href="https://www.instagram.com/agenciainmk" target="_blank" class="agency-link">
+                        <img src="images/in svg blanco.svg" alt="IN Agencia" class="agency-logo">
+                        IN Agencia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <p>Utilizamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra política.</p>
+        <button id="acceptCookies" class="cookie-btn">Aceptar</button>
+    </div>
+
+    <!-- Modal de Compra -->
+    <div id="purchaseModal" class="purchase-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 class="modal-title">Compra Zoológico Activo</h2>
+            <form id="purchaseForm">
+                <div class="form-group">
+                    <label for="cedula">Cédula de Identidad</label>
+                    <input type="text" id="cedula" required placeholder="V-12345678">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Número de Teléfono</label>
+                    <input type="tel" id="telefono" required placeholder="0414-1234567">
+                </div>
+                <div class="form-group">
+                    <label for="animal">Animal a Comprar</label>
+                    <select id="animal" required>
+                        <option value="">Seleccione un animal...</option>
+                        <!-- Se llenará con JS -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="monto">Monto (Bs)</label>
+                    <input type="number" id="monto" required min="1" placeholder="Monto en Bolívares">
+                </div>
+                <button type="submit" class="submit-btn">
+                    Enviar a WhatsApp <i>📱</i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
