@@ -11,7 +11,7 @@
 // ===== CONFIGURACIÓN GLOBAL DE LA APLICACIÓN =====
 const CONFIG = {
     // Datos de contacto para ventas vía WhatsApp
-    WHATSAPP_NUMBER: '+584141234567', // Reemplazar con el número real de atención al cliente
+    WHATSAPP_NUMBER: '584126500144', // Reemplazar con el número real de atención al cliente
     WHATSAPP_MESSAGE_TEMPLATE: `¡Hola! Me interesa comprar un ticket de Triple Pirámide de Oro.
     
 Datos del cliente:
@@ -417,7 +417,7 @@ class CountdownManager {
 class ModalManager {
     constructor() {
         // Redundancia eliminada (línea duplicada removida)
-        this.ticketModal = document.getElementById('ticket-modal');
+        this.modal = document.getElementById('ticket-modal');
         this.openBtns = document.querySelectorAll('#comprar-ticket-btn, .nav-cta');
         this.closeBtn = document.getElementById('modal-close');
         this.form = document.getElementById('ticket-form');
