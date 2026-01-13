@@ -1422,6 +1422,35 @@ body {
 
 .table-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-hint {
+  display: none;
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--secondary-gold);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  border-top-left-radius: var(--border-radius-xl);
+  border-top-right-radius: var(--border-radius-xl);
+}
+
+.table-hint i {
+  margin-right: var(--space-2);
+  animation: hint-swipe 2s infinite;
+}
+
+@keyframes hint-swipe {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(10px); opacity: 0.5; }
+}
+
+@media (max-width: 768px) {
+  .table-hint {
+    display: block;
+  }
 }
 
 .results-table {
@@ -2983,11 +3012,23 @@ body {
 /* ===== MYSTICAL ZODIAC STYLES ===== */
 .mystical-zodiac-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
   position: relative;
   padding: var(--space-8);
-  min-height: 400px;
+  min-height: 500px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .mystical-zodiac-container {
+    flex-direction: column;
+    min-height: 400px;
+    gap: var(--space-6);
+  }
 }
 
 .mystical-aura {
@@ -3038,12 +3079,18 @@ body {
 }
 
 .mystical-image {
-  max-width: 250px;
-  /* Tamaño controlado para no ser excesivo */
+  max-width: 450px;
+  /* Tamaño aumentado para impacto visual */
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
   transition: all 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .mystical-image {
+    max-width: 280px;
+  }
 }
 
 .mystical-image:hover {

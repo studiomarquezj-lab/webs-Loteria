@@ -787,6 +787,7 @@ class ResultsManager {
         if (document.getElementById('today-results-body')) {
             this.loadTodayResults();
         }
+        this.setupMobileInteractions();
     }
 
     async loadTodayResults() {
@@ -829,6 +830,25 @@ class ResultsManager {
             <td><span class="zodiac-badge">${result.zodiacal}</span></td>
         `;
         return row;
+    }
+
+    setupMobileInteractions() {
+        const tableWrapper = document.querySelector('.table-wrapper');
+        const tableHint = document.querySelector('.table-hint');
+
+        if (tableWrapper && tableHint) {
+            const hideHint = () => {
+                tableHint.style.opacity = '0';
+                setTimeout(() => {
+                    tableHint.style.display = 'none';
+                }, 500);
+                tableWrapper.removeEventListener('scroll', hideHint);
+                tableWrapper.removeEventListener('touchstart', hideHint);
+            };
+
+            tableWrapper.addEventListener('scroll', hideHint, { passive: true });
+            tableWrapper.addEventListener('touchstart', hideHint, { passive: true });
+        }
     }
 }
 
@@ -970,10 +990,8 @@ class ZodiacManager {
             suffix = '_Muerte'; // aries_Muerte.webp
         }
 
-        // Caso especial Capricornio Amor (no detectado en lista, fallback a general)
-        if (sign.id === 'capricornio' && category.id === 'amor') {
-            suffix = '';
-        }
+        // Caso especial Capricornio Amor: La imagen ya está disponible, no requiere fallback especial aquí
+        // a menos que se quiera manejar alguna inconsistencia de nombre específica.
 
         return `images/zodiaco/optimizadas_webp/${baseName}${suffix}.webp`;
     }
@@ -1029,33 +1047,73 @@ class ZodiacManager {
         const luckyNumbers = this.generateLuckyNumbers();
         const imagePath = this.getZodiacImagePath(sign, category);
 
-        this.featuredContainer.innerHTML = `
-            <div class="mystical-zodiac-container">
-                <div class="mystical-aura"></div>
-                
-                <div class="mystical-image-wrapper">
-                    <img src="${imagePath}" 
-                          alt="${sign.name} - ${category.label}" 
-                          class="mystical-image"
-                          onerror="this.src='images/zodiaco/optimizadas_webp/${sign.fileId || sign.id}.webp'; this.nextElementSibling.style.display='none';"
-                          loading="lazy">
-                    <p class="image-typo-fallback" style="display:none">Imagen no encontrada: ${category.label}</p>
-                </div>
+        // Si ya hay contenido, aplicamos una transición suave en lugar de borrar todo
+        const wrapper = this.featuredContainer.querySelector('.mystical-zodiac-container');
 
-                <div class="mystical-info">
-                    <h2 class="mystical-title">${sign.name}</h2>
-                    <p class="mystical-emotion">${category.id !== 'general' ? category.label : ''}</p>
-                    <div class="mystical-numbers-container">
-                        ${luckyNumbers.map(num => `
-                            <div class="mystical-orb">
-                                <span class="orb-number">${num}</span>
-                                <div class="orb-glow"></div>
-                            </div>
-                        `).join('')}
+        if (wrapper) {
+            // Animación de salida sutil
+            wrapper.style.opacity = '0';
+            wrapper.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                const img = wrapper.querySelector('.mystical-image');
+                const title = wrapper.querySelector('.mystical-title');
+                const emotion = wrapper.querySelector('.mystical-emotion');
+                const numbers = wrapper.querySelector('.mystical-numbers-container');
+
+                if (img) {
+                    img.src = imagePath;
+                    img.alt = `${sign.name} - ${category.label}`;
+                    // Resetear el onerror en caso de que la nueva imagen también falle
+                    img.onerror = () => {
+                        img.src = `images/zodiaco/optimizadas_webp/${sign.fileId || sign.id}.webp`;
+                    };
+                }
+                if (title) title.textContent = sign.name;
+                if (emotion) emotion.textContent = category.id !== 'general' ? category.label : '';
+
+                if (numbers) {
+                    numbers.innerHTML = luckyNumbers.map(num => `
+                        <div class="mystical-orb">
+                            <span class="orb-number">${num}</span>
+                            <div class="orb-glow"></div>
+                        </div>
+                    `).join('');
+                }
+
+                // Animación de entrada
+                wrapper.style.opacity = '1';
+                wrapper.style.transform = 'translateY(0)';
+            }, 300);
+        } else {
+            // Primera carga: renderizado completo
+            this.featuredContainer.innerHTML = `
+                <div class="mystical-zodiac-container" style="transition: all 0.5s ease;">
+                    <div class="mystical-aura"></div>
+                    
+                    <div class="mystical-image-wrapper">
+                        <img src="${imagePath}" 
+                              alt="${sign.name} - ${category.label}" 
+                              class="mystical-image"
+                              onerror="this.src='images/zodiaco/optimizadas_webp/${sign.fileId || sign.id}.webp'"
+                              loading="lazy">
+                    </div>
+
+                    <div class="mystical-info">
+                        <h2 class="mystical-title">${sign.name}</h2>
+                        <p class="mystical-emotion">${category.id !== 'general' ? category.label : ''}</p>
+                        <div class="mystical-numbers-container">
+                            ${luckyNumbers.map(num => `
+                                <div class="mystical-orb">
+                                    <span class="orb-number">${num}</span>
+                                    <div class="orb-glow"></div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
     }
 
     renderGallery(currentSign) {
