@@ -14,12 +14,17 @@ const CONFIG = {
     WHATSAPP_NUMBER: '584126500144', // Reemplazar con el número real de atención al cliente
     WHATSAPP_MESSAGE_TEMPLATE: `¡Hola! Me interesa comprar un ticket de Triple Pirámide de Oro.
     
-Datos del cliente:
+*Datos del cliente:*
 - Nombre: {nombre}
 - Teléfono: {telefono}
-- Tipo de jugada: {tipoJugada}
+
+*Detalles de la jugada:*
+- Tipo de jugada: {tipoJugada}{signoInfo}
 - Números: {numeros}
-- Monto: Bs. {monto}
+- Monto: {monto}
+
+*Método de pago:*
+- {pago}
 
 ¡Espero su respuesta!`,
 
@@ -470,6 +475,52 @@ class ModalManager {
                 e.preventDefault();
                 this.handleFormSubmit();
             });
+
+            // Lógica condicional para Signo Zodiacal
+            const tipoJugada = this.form.querySelector('#tipo-jugada');
+            const zodiacGroup = this.form.querySelector('#zodiac-group');
+            const signoSelect = this.form.querySelector('#signo');
+
+            if (tipoJugada && zodiacGroup) {
+                tipoJugada.addEventListener('change', () => {
+                    if (tipoJugada.value === 'completa') {
+                        zodiacGroup.style.display = 'block';
+                        signoSelect.setAttribute('required', 'required');
+                    } else {
+                        zodiacGroup.style.display = 'none';
+                        signoSelect.removeAttribute('required');
+                        signoSelect.value = '';
+                    }
+                });
+            }
+
+            // Lógica de Moneda y Métodos de Pago
+            const monedaRadios = this.form.querySelectorAll('input[name="moneda"]');
+            const methodGroups = this.form.querySelectorAll('.payment-method-group');
+            const montoLabel = this.form.querySelector('#label-monto');
+
+            monedaRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const selectedMoneda = radio.value;
+
+                    // Actualizar label de monto
+                    if (montoLabel) {
+                        montoLabel.textContent = `Monto a Apostar (${selectedMoneda})`;
+                    }
+
+                    // Mostrar métodos correspondientes
+                    methodGroups.forEach(group => {
+                        if (group.id === `methods-${selectedMoneda}`) {
+                            group.style.display = 'block';
+                            // Activar el primer radio del grupo visible
+                            const firstRadio = group.querySelector('input[type="radio"]');
+                            if (firstRadio) firstRadio.checked = true;
+                        } else {
+                            group.style.display = 'none';
+                        }
+                    });
+                });
+            });
         }
     }
 
@@ -504,6 +555,9 @@ class ModalManager {
         if (!this.validateForm(data)) {
             return;
         }
+
+        // Limpiar estilos de error si los hubiera
+        this.form.classList.remove('was-validated');
 
         // Mostrar loading
         const submitBtn = this.form.querySelector('button[type="submit"]');
@@ -540,6 +594,16 @@ class ModalManager {
             return false;
         }
 
+        if (data['tipo-jugada'] === 'completa' && !data.signo) {
+            Utils.showToast('Por favor, selecciona un signo zodiacal', 'error');
+            return false;
+        }
+
+        if (!data.pago) {
+            Utils.showToast('Por favor, selecciona un método de pago', 'error');
+            return false;
+        }
+
         if (!data.monto || parseFloat(data.monto) < 1) {
             Utils.showToast('El monto mínimo es Bs. 1', 'error');
             return false;
@@ -549,12 +613,19 @@ class ModalManager {
     }
 
     sendToWhatsApp(data) {
+        let signoInfo = '';
+        if (data['tipo-jugada'] === 'completa' && data.signo) {
+            signoInfo = `\n- Signo: ${data.signo}`;
+        }
+
         const message = CONFIG.WHATSAPP_MESSAGE_TEMPLATE
             .replace('{nombre}', data.nombre)
             .replace('{telefono}', data.telefono)
             .replace('{tipoJugada}', this.getJugadaLabel(data['tipo-jugada']))
-            .replace('{numeros}', data.numeros || 'Sin especificar')
-            .replace('{monto}', data.monto);
+            .replace('{signoInfo}', signoInfo)
+            .replace('{numeros}', data.numeros)
+            .replace('{monto}', `${data.monto} ${data.moneda}`)
+            .replace('{pago}', `${data.pago} (${data.moneda})`);
 
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodedMessage}`;
@@ -565,9 +636,9 @@ class ModalManager {
 
     getJugadaLabel(value) {
         const labels = {
-            'triple': 'Triple Pirámide de Oro (x600)',
-            'terminal': 'Terminal Pirámide de Oro (x60)',
-            'zodiacal': 'Zodiacal Pirámide de Oro (x6000)'
+            'solo-triple': '1. Solo Triple',
+            'triple-terminal': '2. Triple y Terminal',
+            'completa': '3. Triple, Terminal, Tripletazo y Terminalazo'
         };
         return labels[value] || value;
     }

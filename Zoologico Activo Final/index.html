@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="ANIMALITOS/63.png">
 </head>
 
@@ -27,7 +28,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="Images/logo-zoolo-sinf.png" alt="Zoológico Activo" class="logo-img">
+                <img src="Images/logozoo.png" alt="Zoológico Activo" class="logo-img">
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">Inicio</a></li>
@@ -406,18 +407,15 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="Images/logo-zoolo-sinf.png" alt="Zoológico Activo" class="logo-img">
+                        <img src="Images/logozoo.png" alt="Zoológico Activo" class="logo-img">
                     </div>
                     <p class="footer-slogan">Donde la transparencia es tu suerte segura</p>
                     <div class="footer-logos">
                         <img src="Images/loteria-de-guyana.png" alt="Lotería de Guayana" class="footer-logo">
                         <img src="Images/conalot-logo.png" alt="Conalot" class="footer-logo">
-                    </div>
-                    <div class="footer-social">
-                        <a href="#" class="social-link">📘</a>
                         <a href="https://www.instagram.com/zoologicoactivo/?hl=es" target="_blank"
-                            class="social-link">📸</a>
-                        <a href="#" class="social-link">🐦</a>
+                            class="footer-instagram-link" title="Siguenos en Instagram"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -431,17 +429,14 @@
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Juego Responsable</a></li>
+                        <li><a href="reglamento.html">Reglamento</a></li>
+                        <li><a href="terminos.html">Términos y Condiciones</a></li>
                     </ul>
                 </div>
                 <div class="footer-info">
                     <h4>Información</h4>
-                    <p><strong>Operador:</strong> Lotería de Guayana</p>
-                    <p><strong>Empresa:</strong> FDobleA</p>
+                    <p>Registrado en la Lotería de Guayana</p>
                     <p><strong>RIF:</strong> J-505567942</p>
-                    <p><strong>Web:</strong> www.zoologicoactivo.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -472,30 +467,130 @@
         <div class="modal-content">
             <span class="modal-close">&times;</span>
             <h2 class="modal-title">Compra Zoológico Activo</h2>
-            <form id="purchaseForm">
-                <div class="form-group">
-                    <label for="cedula">Cédula de Identidad</label>
-                    <input type="text" id="cedula" required placeholder="V-12345678">
-                </div>
-                <div class="form-group">
-                    <label for="telefono">Número de Teléfono</label>
-                    <input type="tel" id="telefono" required placeholder="0414-1234567">
-                </div>
-                <div class="form-group">
-                    <label for="animal">Animal a Comprar</label>
-                    <select id="animal" required>
-                        <option value="">Seleccione un animal...</option>
-                        <!-- Se llenará con JS -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="monto">Monto (Bs)</label>
-                    <input type="number" id="monto" required min="1" placeholder="Monto en Bolívares">
-                </div>
-                <button type="submit" class="submit-btn">
-                    Enviar a WhatsApp <i>📱</i>
-                </button>
-            </form>
+            <div class="modal-form-grid">
+                <form id="purchaseForm">
+                    <div class="form-group">
+                        <label for="cedula">Cédula de Identidad</label>
+                        <input type="text" id="cedula" required placeholder="V-12345678">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Número de Teléfono</label>
+                        <input type="tel" id="telefono" required placeholder="0414-1234567">
+                    </div>
+
+                    <div class="animal-selection-box">
+                        <div class="form-group">
+                            <label>Agregar Animalito</label>
+                            <div class="animal-input-wrapper">
+                                <input type="text" id="animalInput" placeholder="Escribe el nro o nombre del animal"
+                                    list="animalsDatalist">
+                                <div id="animalPreview" class="animal-preview-thumb"></div>
+                                <datalist id="animalsDatalist">
+                                    <!-- Se llenará con JS -->
+                                </datalist>
+                            </div>
+                            <button type="button" id="addAnimalBtn" class="btn-add-animal">
+                                <i class="fas fa-plus"></i> Agregar a mi jugada
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="selected-animals-container">
+                        <label>Tu jugada:</label>
+                        <ul id="selectedAnimalsList" class="selected-animals-list">
+                            <!-- Los animales se agregan aquí dinámicamente -->
+                        </ul>
+                        <div id="emptyListMsg" class="empty-list-msg">No has agregado animales aún.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Seleccione su Moneda</label>
+                        <div class="currency-grid">
+                            <label class="currency-option">
+                                <input type="radio" name="moneda" value="Bs" checked required>
+                                <div class="currency-card">Bolívares (Bs)</div>
+                            </label>
+                            <label class="currency-option">
+                                <input type="radio" name="moneda" value="USD">
+                                <div class="currency-card">Dólares (USD)</div>
+                            </label>
+                            <label class="currency-option">
+                                <input type="radio" name="moneda" value="COP">
+                                <div class="currency-card">Pesos (COP)</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group payment-method-group" id="methods-Bs">
+                        <label>Forma de Pago (Bs)</label>
+                        <div class="payment-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Pago Móvil" checked>
+                                <div class="payment-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Pago Móvil</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Transferencia">
+                                <div class="payment-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>Transferencia</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group payment-method-group" id="methods-USD" style="display: none;">
+                        <label>Forma de Pago (USD)</label>
+                        <div class="payment-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Zelle">
+                                <div class="payment-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>Zelle</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Binance">
+                                <div class="payment-card">
+                                    <i class="fab fa-bitcoin"></i>
+                                    <span>Binance</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group payment-method-group" id="methods-COP" style="display: none;">
+                        <label>Forma de Pago (COP)</label>
+                        <div class="payment-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Nequi">
+                                <div class="payment-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Nequi</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Daviplata">
+                                <div class="payment-card">
+                                    <i class="fas fa-wallet"></i>
+                                    <span>Daviplata</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monto" id="label-monto">Monto (Bs) por animal</label>
+                        <input type="number" id="monto" required min="1" placeholder="Monto">
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitPurchase">
+                        Enviar Jugada a WhatsApp <i>📱</i>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -609,12 +609,144 @@ function initPurchasePopup() {
   const modal = document.getElementById('purchaseModal');
   const closeBtn = document.querySelector('.modal-close');
   const form = document.getElementById('purchaseForm');
-  const animalSelect = document.getElementById('animal');
+  const animalsDatalist = document.getElementById('animalsDatalist');
+  const animalInput = document.getElementById('animalInput');
+  const animalPreview = document.getElementById('animalPreview');
+  const addAnimalBtn = document.getElementById('addAnimalBtn');
+  const selectedAnimalsList = document.getElementById('selectedAnimalsList');
+  const emptyListMsg = document.getElementById('emptyListMsg');
   const heroBuyBtn = document.getElementById('heroBuyBtn');
 
-  if (!modal || !form || !animalSelect) return;
+  let selectedAnimals = [];
 
-  // Abrir modal desde botón hero
+  if (!modal || !form || !animalsDatalist) return;
+
+  // Llenar datalist de animales
+  ANIMALS.forEach(animal => {
+    const option = document.createElement('option');
+    option.value = `${animal.number} - ${animal.name}`;
+    animalsDatalist.appendChild(option);
+  });
+
+  // Función para actualizar la vista previa de imagen
+  function updatePreview() {
+    let rawValue = animalInput.value.trim();
+    let animalData = null;
+
+    if (rawValue.includes(" - ")) {
+      const numberPart = rawValue.split(" - ")[0].trim();
+      animalData = ANIMALS.find(a => a.number === numberPart);
+    } else {
+      let searchNum = rawValue;
+      if (!isNaN(rawValue) && rawValue !== "0" && rawValue.length === 1) {
+        searchNum = rawValue.padStart(2, '0');
+      }
+      animalData = ANIMALS.find(a => a.number === searchNum) ||
+        ANIMALS.find(a => a.name.toLowerCase() === rawValue.toLowerCase());
+    }
+
+    if (animalData && animalData.image) {
+      animalPreview.innerHTML = `<img src="${animalData.image}" alt="${animalData.name}">`;
+      animalPreview.style.borderColor = "var(--color-primary)";
+    } else {
+      animalPreview.innerHTML = "";
+      animalPreview.style.borderColor = "rgba(59, 130, 246, 0.2)";
+    }
+  }
+
+  // Listener para la vista previa
+  animalInput.addEventListener('input', updatePreview);
+
+  // Función para agregar animal
+  function addAnimal() {
+    let rawValue = animalInput.value.trim();
+    if (rawValue === "") {
+      alert("Por favor ingresa un número o nombre de animal");
+      return;
+    }
+
+    let animalData = null;
+
+    // 1. Intentar buscar por el formato del datalist "00 - Nombre"
+    if (rawValue.includes(" - ")) {
+      const numberPart = rawValue.split(" - ")[0].trim();
+      animalData = ANIMALS.find(a => a.number === numberPart);
+    }
+
+    // 2. Si no se encontró, intentar buscar por número exacto
+    if (!animalData) {
+      // Normalizar número (si es "5" -> "05", pero ignorar si es "0")
+      let searchNum = rawValue;
+      if (!isNaN(rawValue) && rawValue !== "0" && rawValue.length === 1) {
+        searchNum = rawValue.padStart(2, '0');
+      }
+      animalData = ANIMALS.find(a => a.number === searchNum);
+    }
+
+    // 3. Si no se encontró, intentar buscar por nombre (insensible a mayúsculas)
+    if (!animalData) {
+      animalData = ANIMALS.find(a => a.name.toLowerCase() === rawValue.toLowerCase());
+    }
+
+    if (!animalData) {
+      alert("No se encontró ningún animal que coincida con \"" + rawValue + "\". Por favor usa el número (00-63) o el nombre exacto.");
+      return;
+    }
+
+    // Evitar duplicados
+    if (selectedAnimals.some(a => a.number === animalData.number)) {
+      alert("El animal \"" + animalData.name + "\" ya está en tu jugada");
+      return;
+    }
+
+    // Agregar al array
+    selectedAnimals.push({
+      number: animalData.number,
+      name: animalData.name,
+      image: animalData.image
+    });
+    renderSelectedAnimals();
+
+    // Limpiar input y preview
+    animalInput.value = "";
+    updatePreview();
+    animalInput.focus();
+  }
+
+  function renderSelectedAnimals() {
+    selectedAnimalsList.innerHTML = "";
+    if (selectedAnimals.length === 0) {
+      emptyListMsg.style.display = "block";
+    } else {
+      emptyListMsg.style.display = "none";
+      selectedAnimals.forEach((animal, index) => {
+        const li = document.createElement("li");
+        li.className = "selected-animal-item";
+        li.innerHTML = `
+          <div class="selected-animal-info">
+            <img src="${animal.image}" alt="${animal.name}" class="selected-animal-img">
+            <span><strong>${animal.number}</strong> - ${animal.name}</span>
+          </div>
+          <i class="fas fa-trash remove-animal" data-index="${index}"></i>
+        `;
+        selectedAnimalsList.appendChild(li);
+      });
+    }
+
+    // Asignar eventos de eliminar
+    document.querySelectorAll('.remove-animal').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const index = parseInt(this.getAttribute('data-index'));
+        selectedAnimals.splice(index, 1);
+        renderSelectedAnimals();
+      });
+    });
+  }
+
+  // Evento botón agregar
+  addAnimalBtn.addEventListener('click', addAnimal);
+
+  // Abrir modal
   if (heroBuyBtn) {
     heroBuyBtn.addEventListener('click', () => {
       modal.classList.add('show');
@@ -622,55 +754,90 @@ function initPurchasePopup() {
     });
   }
 
-  // Llenar select de animales
-  ANIMALS.forEach(animal => {
-    const option = document.createElement('option');
-    option.value = `${animal.number} - ${animal.name}`;
-    option.textContent = `${animal.number} - ${animal.name}`;
-    animalSelect.appendChild(option);
-  });
-
-  // Cerrar modal
   function closeModal() {
     modal.classList.remove('show');
     document.body.style.overflow = '';
+    selectedAnimals = []; // Limpiar lista al cerrar
+    renderSelectedAnimals();
+    form.reset();
   }
 
   if (closeBtn) {
     closeBtn.addEventListener('click', closeModal);
   }
 
-  // Cerrar al hacer clic fuera
   window.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();
     }
   });
 
+  // Lógica de Moneda y Métodos de Pago
+  const monedaRadios = document.querySelectorAll('input[name="moneda"]');
+  const methodGroups = document.querySelectorAll('.payment-method-group');
+  const montoLabel = document.getElementById('label-monto');
+
+  monedaRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      const selectedMoneda = radio.value;
+
+      // Actualizar label de monto
+      if (montoLabel) {
+        montoLabel.textContent = `Monto (${selectedMoneda}) por animal`;
+      }
+
+      // Mostrar métodos correspondientes
+      methodGroups.forEach(group => {
+        if (group.id === `methods-${selectedMoneda}`) {
+          group.style.display = 'block';
+          // Activar el primer radio del grupo visible
+          const firstRadio = group.querySelector('input[type="radio"]');
+          if (firstRadio) firstRadio.checked = true;
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    });
+  });
+
   // Manejar envío del formulario
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    if (selectedAnimals.length === 0) {
+      alert("Por favor agrega al menos un animal a tu jugada");
+      return;
+    }
+
     const cedula = document.getElementById('cedula').value;
     const telefono = document.getElementById('telefono').value;
-    const animal = document.getElementById('animal').value;
     const monto = document.getElementById('monto').value;
+    const moneda = form.elements['moneda'].value;
+    const pago = form.elements['pago'].value;
 
-    // Mensaje para WhatsApp
-    const message = `Hola, quiero comprar zoologico activo.
-Cedula de indentidad: ${cedula}
-Numero de telefono: ${telefono}
-Animal comprado: ${animal}
-Monto: ${monto} Bs`;
+    const animalsString = selectedAnimals.map(a => `${a.number} - ${a.name}`).join(", ");
 
-    // Número de WhatsApp (PLACEHOLDER)
+    const message = `¡Hola! Quiero comprar Zoológico Activo. 🦁
+
+*Datos del cliente:*
+- Cédula: ${cedula}
+- Teléfono: ${telefono}
+
+*Detalles de la jugada:*
+- Animales: ${animalsString}
+- Monto por animal: ${monto} ${moneda}
+- Total a pagar: ${monto * selectedAnimals.length} ${moneda}
+
+*Método de pago:*
+- ${pago} (${moneda})
+
+¡Espero su respuesta!`;
+
     const whatsappNumber = "584127786726";
-
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, '_blank');
     closeModal();
-    form.reset();
   });
 }
 

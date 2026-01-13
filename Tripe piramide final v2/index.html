@@ -364,25 +364,50 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-main">
-                <p>&copy; 2025 Triple Pirámide de Oro - Todos los derechos reservados</p>
-                <p>Operado por Operadora El Emperador de Oro, C.A. | Lotería de Guayana</p>
-                <a href="https://www.instagram.com/triplepiramidedeoro/" target="_blank" class="footer-instagram">
-                    <i class="fab fa-instagram"></i>
-                    Síguenos en Instagram @triplepiramidedeoro
-                </a>
-                <p class="warning">⚠️ Prohibida la venta a menores de edad</p>
-                <div class="footer-partners">
-                    <img src="images/loteria-de-guyana.png" alt="Lotería de Guayana" class="partner-logo"
-                        loading="lazy">
-                    <img src="images/conalot-logo.png" alt="CONALOT" class="partner-logo" loading="lazy">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/triple_piramide_logo.png" alt="Triple Pirámide de Oro" class="footer-logo">
+                    <p class="footer-slogan">Tu pirámide de la suerte en cada sorteo. El juego más emocionante de la
+                        lotería venezolana.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="reglamento.html">Reglamento</a></li>
+                        <li><a href="terminos.html">Términos y Condiciones</a></li>
+                        <li><a href="resultados.html">Ver Resultados</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Síguenos</h4>
+                    <a href="https://www.instagram.com/triplepiramidedeoro/" target="_blank" class="instagram-pill">
+                        <i class="fab fa-instagram"></i> @triplepiramidedeoro
+                    </a>
+                </div>
+
+                <div class="footer-info">
+                    <h4>Legal</h4>
+                    <p>Registrado en la Lotería de Guayana</p>
+                    <div class="footer-logos">
+                        <img src="images/loteria-de-guyana.png" alt="Lotería de Guayana" class="partner-logo">
+                        <img src="images/conalot-logo.png" alt="CONALOT" class="partner-logo">
+                    </div>
                 </div>
             </div>
-            <div class="footer-agency">
-                <span class="agency-text">Hecho por In Agencia</span>
-                <a href="https://www.instagram.com/agenciainmk/#" target="_blank">
-                    <img src="images/in-svg-blanco.svg" alt="In Agencia" class="agency-logo" loading="lazy">
-                </a>
+
+            <div class="footer-bottom">
+                <div class="age-restriction">
+                    <span>🔞 JUEGA CON RESPONSABILIDAD | PROHIBIDA LA VENTA A MENORES DE EDAD</span>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Triple Pirámide de Oro. Todos los derechos reservados.</p>
+                    <a href="https://www.instagram.com/agenciainmk/" target="_blank" class="agency-link">
+                        <img src="images/in-svg-blanco.svg" alt="IN Agencia" class="agency-logo">
+                        Hecho por IN Agencia
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
@@ -412,19 +437,116 @@
                         <label for="tipo-jugada">Tipo de Jugada</label>
                         <select id="tipo-jugada" name="tipo-jugada" required>
                             <option value="">Selecciona el tipo</option>
-                            <option value="triple">Triple Pirámide de Oro (x600)</option>
-                            <option value="terminal">Terminal Pirámide de Oro (x60)</option>
-                            <option value="zodiacal">Zodiacal Pirámide de Oro (x6000)</option>
+                            <option value="solo-triple">1. Solo Triple</option>
+                            <option value="triple-terminal">2. Triple y Terminal</option>
+                            <option value="completa">3. Triple, Terminal, Tripletazo y Terminalazo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="zodiac-group" style="display: none;">
+                        <label for="signo">Signo Zodiacal</label>
+                        <select id="signo" name="signo">
+                            <option value="">Selecciona un signo</option>
+                            <option value="Aries">Aries</option>
+                            <option value="Tauro">Tauro</option>
+                            <option value="Géminis">Géminis</option>
+                            <option value="Cáncer">Cáncer</option>
+                            <option value="Leo">Leo</option>
+                            <option value="Virgo">Virgo</option>
+                            <option value="Libra">Libra</option>
+                            <option value="Escorpio">Escorpio</option>
+                            <option value="Sagitario">Sagitario</option>
+                            <option value="Capricornio">Capricornio</option>
+                            <option value="Acuario">Acuario</option>
+                            <option value="Piscis">Piscis</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="numeros">Tus Números (opcional)</label>
-                        <input type="text" id="numeros" name="numeros" placeholder="Ej: 123, 456, 789">
+                        <label>Seleccione su Moneda</label>
+                        <div class="currency-grid">
+                            <label class="currency-option">
+                                <input type="radio" name="moneda" value="Bs" checked required>
+                                <div class="currency-card">Bolívares (Bs)</div>
+                            </label>
+                            <label class="currency-option">
+                                <input type="radio" name="moneda" value="USD">
+                                <div class="currency-card">Dólares (USD)</div>
+                            </label>
+                            <label class="currency-option">
+                                <input type="radio" name="moneda" value="COP">
+                                <div class="currency-card">Pesos (COP)</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group payment-method-group" id="methods-Bs">
+                        <label>Forma de Pago (Bs)</label>
+                        <div class="payment-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Pago Móvil" checked>
+                                <div class="payment-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Pago Móvil</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Transferencia">
+                                <div class="payment-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>Transferencia</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group payment-method-group" id="methods-USD" style="display: none;">
+                        <label>Forma de Pago (USD)</label>
+                        <div class="payment-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Zelle">
+                                <div class="payment-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>Zelle</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Binance">
+                                <div class="payment-card">
+                                    <i class="fab fa-bitcoin"></i>
+                                    <span>Binance</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group payment-method-group" id="methods-COP" style="display: none;">
+                        <label>Forma de Pago (COP)</label>
+                        <div class="payment-grid">
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Nequi">
+                                <div class="payment-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Nequi</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="pago" value="Daviplata">
+                                <div class="payment-card">
+                                    <i class="fas fa-wallet"></i>
+                                    <span>Daviplata</span>
+                                </div>
+                            </label>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="monto">Monto a Apostar (Bs.)</label>
+                        <label for="numeros">Tus Números</label>
+                        <input type="text" id="numeros" name="numeros" placeholder="Ej: 123, 456, 789" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monto" id="label-monto">Monto a Apostar (Bs.)</label>
                         <input type="number" id="monto" name="monto" min="1" step="0.01" value="1" required>
                     </div>
 
