@@ -917,19 +917,28 @@ class ZodiacManager {
     constructor() {
         this.featuredContainer = document.getElementById('zodiac-featured');
         this.galleryContainer = document.getElementById('zodiac-gallery');
+
         this.signs = [
-            { name: 'Aries', date: '21 Mar - 19 Abr', img: 'images/zodiaco/aries.jpg', emotion: 'Dinero' },
-            { name: 'Tauro', date: '20 Abr - 20 May', img: 'images/zodiaco/tauro.jpg', emotion: 'Dinero' },
-            { name: 'Géminis', date: '21 May - 20 Jun', img: 'images/zodiaco/geminis.jpg', emotion: 'Dinero' },
-            { name: 'Cáncer', date: '21 Jun - 22 Jul', img: 'images/zodiaco/cancer.jpg', emotion: 'Dinero' },
-            { name: 'Leo', date: '23 Jul - 22 Ago', img: 'images/zodiaco/leo.jpg', emotion: 'Dinero' },
-            { name: 'Virgo', date: '23 Ago - 22 Sep', img: 'images/zodiaco/virgo.jpg', emotion: 'Riqueza' },
-            { name: 'Libra', date: '23 Sep - 22 Oct', img: 'images/zodiaco/libra.jpg', emotion: 'Armonía' },
-            { name: 'Escorpio', date: '23 Oct - 21 Nov', img: 'images/zodiaco/escorpio.jpg', emotion: 'Poder' },
-            { name: 'Sagitario', date: '22 Nov - 21 Dic', img: 'images/zodiaco/sagitario.jpg', emotion: 'Suerte' },
-            { name: 'Capricornio', date: '22 Dic - 19 Ene', img: 'images/zodiaco/capricornio.jpg', emotion: 'Dinero' },
-            { name: 'Acuario', date: '20 Ene - 18 Feb', img: 'images/zodiaco/acuario.jpg', emotion: 'Innovación' },
-            { name: 'Piscis', date: '19 Feb - 20 Mar', img: 'images/zodiaco/picis.jpg', emotion: 'Sueños' }
+            { id: 'aries', name: 'Aries', date: '21 Mar - 19 Abr' },
+            { id: 'tauro', name: 'Tauro', date: '20 Abr - 20 May' },
+            { id: 'geminis', name: 'Géminis', date: '21 May - 20 Jun' },
+            { id: 'cancer', name: 'Cáncer', date: '21 Jun - 22 Jul' },
+            { id: 'leo', name: 'Leo', date: '23 Jul - 22 Ago' },
+            { id: 'virgo', name: 'Virgo', date: '23 Ago - 22 Sep' },
+            { id: 'libra', name: 'Libra', date: '23 Sep - 22 Oct' },
+            { id: 'escorpio', name: 'Escorpio', date: '23 Oct - 21 Nov' },
+            { id: 'sagitario', name: 'Sagitario', date: '22 Nov - 21 Dic' },
+            { id: 'capricornio', name: 'Capricornio', date: '22 Dic - 19 Ene' },
+            { id: 'acuario', name: 'Acuario', date: '20 Ene - 18 Feb' },
+            { id: 'piscis', name: 'Piscis', date: '19 Feb - 20 Mar', fileId: 'picis' }
+        ];
+
+        this.categories = [
+            { id: 'general', label: 'General', suffix: '' },
+            { id: 'amor', label: 'Amor', suffix: '_amor' },
+            { id: 'dinero', label: 'Dinero', suffix: '_dinero' },
+            { id: 'vida', label: 'Vida', suffix: '_vida' },
+            { id: 'muerte', label: 'Muerte', suffix: '_muerte' }
         ];
 
         if (this.featuredContainer && this.galleryContainer) {
@@ -938,71 +947,77 @@ class ZodiacManager {
     }
 
     init() {
-        const currentSign = this.getCurrentSign();
-        this.renderFeatured(currentSign);
-        this.renderGallery(currentSign);
+        const sign = this.getDailySign();
+        const category = this.getDailyCategoryForSign(sign);
+        this.renderFeatured(sign, category);
+        this.renderGallery(sign);
         this.bindHeroIcons();
     }
 
+    /**
+     * Obtiene una imagen específica manejando typos y variaciones de archivos.
+     */
+    getZodiacImagePath(sign, category) {
+        let baseName = sign.fileId || sign.id;
+        let suffix = category.suffix;
+
+        // Manejo de excepciones específicas de archivos (Typos detectados)
+        if (sign.id === 'virgo' && category.id === 'vida') {
+            baseName = 'vigo'; // vigo_vida.webp
+        }
+
+        if (sign.id === 'aries' && category.id === 'muerte') {
+            suffix = '_Muerte'; // aries_Muerte.webp
+        }
+
+        // Caso especial Capricornio Amor (no detectado en lista, fallback a general)
+        if (sign.id === 'capricornio' && category.id === 'amor') {
+            suffix = '';
+        }
+
+        return `images/zodiaco/optimizadas_webp/${baseName}${suffix}.webp`;
+    }
+
+    getDailySign() {
+        const now = new Date();
+        const dateSeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+        const signIndex = dateSeed % this.signs.length;
+        return this.signs[signIndex];
+    }
+
+    getDailyCategoryForSign(sign) {
+        const now = new Date();
+        const dateSeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+
+        // Usamos una combinación de la semilla de fecha y el nombre del signo para que 
+        // cada signo tenga una categoría distinta pero estable durante el día.
+        let signHash = 0;
+        for (let i = 0; i < sign.id.length; i++) {
+            signHash = ((signHash << 5) - signHash) + sign.id.charCodeAt(i);
+        }
+
+        const categoryIndex = Math.abs(dateSeed + signHash) % this.categories.length;
+        return this.categories[categoryIndex];
+    }
+
     bindHeroIcons() {
-        // Conectar iconos del Hero con el ZodiacManager
         document.querySelectorAll('.zodiac-icon').forEach(icon => {
             icon.addEventListener('click', () => {
-                const signName = icon.dataset.sign;
-                if (signName && window.API && window.API.updateFeaturedSign) {
-                    // Normalizar nombre (primera letra mayúscula para coincidir con la galería)
-                    const normalizedSign = signName.charAt(0).toUpperCase() + signName.slice(1);
-                    window.API.updateFeaturedSign(normalizedSign);
-
-                    // Scroll suave hasta la sección de zodíaco
-                    Utils.scrollToElement('zodiaco');
+                const signId = icon.dataset.sign;
+                if (signId) {
+                    const sign = this.signs.find(s => s.id === signId);
+                    if (sign) {
+                        const category = this.getDailyCategoryForSign(sign);
+                        this.renderFeatured(sign, category);
+                        this.updateActiveThumbnail(sign.name);
+                        Utils.scrollToElement('zodiaco');
+                    }
                 }
             });
         });
     }
 
-    /**
-     * Determina de forma determinista el signo del zodíaco para el sorteo actual.
-     * Esto asegura que todos los usuarios vean el mismo signo para el mismo periodo de sorteo.
-     */
-    getCurrentSign() {
-        const now = new Date();
-        const currentTime = now.getHours() * 60 + now.getMinutes();
-
-        // Horarios oficiales de sorteos
-        const draws = [
-            11 * 60 + 45, // 11:45 AM
-            15 * 60 + 45, // 03:45 PM
-            18 * 60 + 45  // 06:45 PM
-        ];
-
-        // Determinar en qué etapa del día nos encontramos para el signo destacado
-        let drawIndex = 0;
-        if (currentTime >= draws[0] && currentTime < draws[1]) {
-            drawIndex = 1;
-        } else if (currentTime >= draws[1] && currentTime < draws[2]) {
-            drawIndex = 2;
-        } else if (currentTime >= draws[2]) {
-            drawIndex = 3;
-        }
-
-        // Generar una semilla basada en la fecha y el índice del sorteo
-        const dateStr = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
-        const seedStr = `${dateStr}-draw-${drawIndex}`;
-
-        // Algoritmo de hash simple (Java String hashCode style)
-        let hash = 0;
-        for (let i = 0; i < seedStr.length; i++) {
-            hash = ((hash << 5) - hash) + seedStr.charCodeAt(i);
-            hash |= 0; // Convertir a entero de 32 bits
-        }
-
-        const signIndex = Math.abs(hash) % this.signs.length;
-        return this.signs[signIndex];
-    }
-
     generateLuckyNumbers() {
-        // Generar 3 números de un solo dígito (0-9)
         const nums = [];
         for (let i = 0; i < 3; i++) {
             nums.push(Math.floor(Math.random() * 10).toString());
@@ -1010,26 +1025,26 @@ class ZodiacManager {
         return nums;
     }
 
-    renderFeatured(sign) {
+    renderFeatured(sign, category) {
         const luckyNumbers = this.generateLuckyNumbers();
+        const imagePath = this.getZodiacImagePath(sign, category);
 
         this.featuredContainer.innerHTML = `
             <div class="mystical-zodiac-container">
-                <!-- Aura de fondo -->
                 <div class="mystical-aura"></div>
                 
-                <!-- Imagen Flotante -->
                 <div class="mystical-image-wrapper">
-                    <img src="${sign.img}" 
-                          alt="${sign.name}" 
+                    <img src="${imagePath}" 
+                          alt="${sign.name} - ${category.label}" 
                           class="mystical-image"
+                          onerror="this.src='images/zodiaco/optimizadas_webp/${sign.fileId || sign.id}.webp'; this.nextElementSibling.style.display='none';"
                           loading="lazy">
+                    <p class="image-typo-fallback" style="display:none">Imagen no encontrada: ${category.label}</p>
                 </div>
 
-                <!-- Info Mística -->
                 <div class="mystical-info">
                     <h2 class="mystical-title">${sign.name}</h2>
-                    <p class="mystical-emotion">${sign.emotion || ''}</p>
+                    <p class="mystical-emotion">${category.id !== 'general' ? category.label : ''}</p>
                     <div class="mystical-numbers-container">
                         ${luckyNumbers.map(num => `
                             <div class="mystical-orb">
@@ -1046,26 +1061,32 @@ class ZodiacManager {
     renderGallery(currentSign) {
         this.galleryContainer.innerHTML = this.signs.map(sign => `
             <div class="zodiac-thumb ${sign.name === currentSign.name ? 'active' : ''}" 
-                 onclick="API.updateFeaturedSign('${sign.name}')"
+                 data-sign-id="${sign.id}"
                  title="${sign.name}">
-                <img src="${sign.img}" 
+                <img src="images/zodiaco/optimizadas_webp/${sign.fileId || sign.id}.webp" 
                      alt="${sign.name}"
                      loading="lazy">
             </div>
         `).join('');
 
-        // Expose method to global scope for onclick
-        window.API = window.API || {};
-        window.API.updateFeaturedSign = (signName) => {
-            const sign = this.signs.find(s => s.name === signName);
-            if (sign) {
-                this.renderFeatured(sign);
-                // Update active class
-                document.querySelectorAll('.zodiac-thumb').forEach(el => el.classList.remove('active'));
-                const activeThumb = Array.from(document.querySelectorAll('.zodiac-thumb')).find(el => el.title === signName);
-                if (activeThumb) activeThumb.classList.add('active');
-            }
-        };
+        // Agregar eventos de clic a las miniaturas
+        this.galleryContainer.querySelectorAll('.zodiac-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const signId = thumb.dataset.signId;
+                const sign = this.signs.find(s => s.id === signId);
+                if (sign) {
+                    const category = this.getDailyCategoryForSign(sign);
+                    this.renderFeatured(sign, category);
+                    this.updateActiveThumbnail(sign.name);
+                }
+            });
+        });
+    }
+
+    updateActiveThumbnail(signName) {
+        document.querySelectorAll('.zodiac-thumb').forEach(el => {
+            el.classList.toggle('active', el.title === signName);
+        });
     }
 }
 
